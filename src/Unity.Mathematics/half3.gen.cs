@@ -1221,7 +1221,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(half3 v)
         {
-            return csum(uint3(v.x.value, v.y.value, v.z.value) * uint3(0x685835CFu, 0xC3D32AE1u, 0xB966942Fu)) + 0xFE9856B3u;
+            return csum(uint3(v.x.value, v.y.value, v.z.value) * uint3(0xD42EAFA3u, 0xD9AFD06Du, 0x97A65421u)) + 0x7809205Fu;
         }
 
         /// <summary>
@@ -1232,7 +1232,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint3 hashwide(half3 v)
         {
-            return (uint3(v.x.value, v.y.value, v.z.value) * uint3(0xFA3A3285u, 0xAD55999Du, 0xDCDD5341u)) + 0x94DDD769u;
+            return (uint3(v.x.value, v.y.value, v.z.value) * uint3(0x9C9F0823u, 0x5A9CA13Bu, 0xAFCDD5EFu)) + 0xA88D187Du;
         }
 
     }

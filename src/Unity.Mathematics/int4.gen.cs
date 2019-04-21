@@ -3399,7 +3399,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(int4 v)
         {
-            return csum(asuint(v) * uint4(0x6E050B01u, 0x750FDBF5u, 0x7F3DD499u, 0x52EAAEBBu)) + 0x4599C793u;
+            return csum(asuint(v) * uint4(0x77E35E77u, 0x863E3729u, 0xE191B035u, 0x68586FAFu)) + 0xD4DFF6D3u;
         }
 
         /// <summary>
@@ -3410,7 +3410,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint4 hashwide(int4 v)
         {
-            return (asuint(v) * uint4(0x83B5E729u, 0xC267163Fu, 0x67BC9149u, 0xAD7C5EC1u)) + 0x822A7D6Du;
+            return (asuint(v) * uint4(0xCB634F4Du, 0x9B13B92Du, 0x4ABF0813u, 0x86068063u)) + 0xD75513F9u;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two int4 vectors into an int value.</summary>

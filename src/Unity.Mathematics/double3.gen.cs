@@ -1461,7 +1461,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(double3 v)
         {
-            return csum(fold_to_uint(v) * uint3(0xAF0F3103u, 0xE4A056C7u, 0x841D8225u)) + 0xC9393C7Du;
+            return csum(fold_to_uint(v) * uint3(0xF9EA92D5u, 0xC2FAFCB9u, 0x616E9CA1u)) + 0xC5C5394Bu;
         }
 
         /// <summary>
@@ -1472,7 +1472,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint3 hashwide(double3 v)
         {
-            return (fold_to_uint(v) * uint3(0xD42EAFA3u, 0xD9AFD06Du, 0x97A65421u)) + 0x7809205Fu;
+            return (fold_to_uint(v) * uint3(0xCAE78587u, 0x7A1541C9u, 0xF83BD927u)) + 0x6A243BCBu;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two double3 vectors into a double value.</summary>

@@ -192,6 +192,10 @@ namespace Unity.Mathematics.Mathematics.CodeGen
             // Generate auto generated comment
             text = s_AutoGenHeader + text;
 
+            if(!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(filename)))
+            {
+                System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(filename));
+            }
             System.IO.File.WriteAllText(filename, text);
         }
 
@@ -254,6 +258,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                     vectorGenerator.WriteType("uint", rows, columns, Features.All);
                     vectorGenerator.WriteType("float", rows, columns, Features.Arithmetic | Features.UnaryNegation);
                     vectorGenerator.WriteType("double", rows, columns, Features.Arithmetic | Features.UnaryNegation);
+                    vectorGenerator.WriteType("fix64p", rows, columns, Features.Arithmetic | Features.UnaryNegation);
                 }
             }
 
@@ -1488,7 +1493,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                     string columnName = m_Columns > 1 ? "v.c" + column : "v";
                     if (m_BaseType != "uint")
                     {
-                        if(m_BaseType == "double")
+                        if(m_BaseType == "double" || m_BaseType == "fix64p")
                             columnName = "fold_to_uint(" + columnName + ")";
                         else if(m_BaseType == "half")
                         {

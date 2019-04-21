@@ -506,10 +506,10 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(uint4x4 v)
         {
-            return csum(v.c0 * uint4(0x9C9F0823u, 0x5A9CA13Bu, 0xAFCDD5EFu, 0xA88D187Du) + 
-                        v.c1 * uint4(0xCF6EBA1Du, 0x9D88E5A1u, 0xEADF0775u, 0x747A9D7Bu) + 
-                        v.c2 * uint4(0x4111F799u, 0xB5F05AF1u, 0xFD80290Bu, 0x8B65ADB7u) + 
-                        v.c3 * uint4(0xDFF4F563u, 0x7069770Du, 0xD1224537u, 0xE99ED6F3u)) + 0x48125549u;
+            return csum(v.c0 * uint4(0x568DAAA9u, 0x7530254Fu, 0x9F090439u, 0x5E9F85C9u) + 
+                        v.c1 * uint4(0x8C4CA03Fu, 0xB8D969EDu, 0xAC5DB57Bu, 0xA91A02EDu) + 
+                        v.c2 * uint4(0xB3C49313u, 0xF43A9ABBu, 0x84E7E01Bu, 0x8E055BE5u) + 
+                        v.c3 * uint4(0x6E624EB7u, 0x7383ED49u, 0xDD49C23Bu, 0xEBD0D005u)) + 0x91475DF7u;
         }
 
         /// <summary>
@@ -520,10 +520,10 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint4 hashwide(uint4x4 v)
         {
-            return (v.c0 * uint4(0xEEE2123Bu, 0xE3AD9FE5u, 0xCE1CF8BFu, 0x7BE39F3Bu) + 
-                    v.c1 * uint4(0xFAB9913Fu, 0xB4501269u, 0xE04B89FDu, 0xDB3DE101u) + 
-                    v.c2 * uint4(0x7B6D1B4Bu, 0x58399E77u, 0x5EAC29C9u, 0xFC6014F9u) + 
-                    v.c3 * uint4(0x6BF6693Fu, 0x9D1B1D9Bu, 0xF842F5C1u, 0xA47EC335u)) + 0xA477DF57u;
+            return (v.c0 * uint4(0x55E84827u, 0x90A285BBu, 0x5D19E1D5u, 0xFAAF07DDu) + 
+                    v.c1 * uint4(0x625C45BDu, 0xC9F27FCBu, 0x6D2523B1u, 0x6E2BF6A9u) + 
+                    v.c2 * uint4(0xCC74B3B7u, 0x83B58237u, 0x833E3E29u, 0xA9D919BFu) + 
+                    v.c3 * uint4(0xC3EC1D97u, 0xB8B208C7u, 0x5D3ED947u, 0x4473BBB1u)) + 0xCBA11D5Fu;
         }
 
     }

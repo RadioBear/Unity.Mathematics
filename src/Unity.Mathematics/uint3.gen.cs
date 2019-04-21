@@ -1479,7 +1479,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(uint3 v)
         {
-            return csum(v * uint3(0xCD266C89u, 0xF1852A33u, 0x77E35E77u)) + 0x863E3729u;
+            return csum(v * uint3(0xDB3DE101u, 0x7B6D1B4Bu, 0x58399E77u)) + 0x5EAC29C9u;
         }
 
         /// <summary>
@@ -1490,7 +1490,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint3 hashwide(uint3 v)
         {
-            return (v * uint3(0xE191B035u, 0x68586FAFu, 0xD4DFF6D3u)) + 0xCB634F4Du;
+            return (v * uint3(0xFC6014F9u, 0x6BF6693Fu, 0x9D1B1D9Bu)) + 0xF842F5C1u;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two uint3 vectors into a uint value.</summary>

@@ -1461,7 +1461,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(float3 v)
         {
-            return csum(asuint(v) * uint3(0x9B13B92Du, 0x4ABF0813u, 0x86068063u)) + 0xD75513F9u;
+            return csum(asuint(v) * uint3(0xA47EC335u, 0xA477DF57u, 0xC4B1493Fu)) + 0xBA0966D3u;
         }
 
         /// <summary>
@@ -1472,7 +1472,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint3 hashwide(float3 v)
         {
-            return (asuint(v) * uint3(0x5AB3E8CDu, 0x676E8407u, 0xB36DE767u)) + 0x6FCA387Du;
+            return (asuint(v) * uint3(0xAFBEE253u, 0x5B419C01u, 0x515D90F5u)) + 0xEC9F68F3u;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two float3 vectors into a float value.</summary>

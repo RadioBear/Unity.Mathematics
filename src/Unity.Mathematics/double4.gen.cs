@@ -3383,7 +3383,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(double4 v)
         {
-            return csum(fold_to_uint(v) * uint4(0x9F1C739Bu, 0x4B1BD187u, 0x9DF50593u, 0xF18EEB85u)) + 0x9E19BFC3u;
+            return csum(fold_to_uint(v) * uint4(0x4111F799u, 0xB5F05AF1u, 0xFD80290Bu, 0x8B65ADB7u)) + 0xDFF4F563u;
         }
 
         /// <summary>
@@ -3394,7 +3394,7 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint4 hashwide(double4 v)
         {
-            return (fold_to_uint(v) * uint4(0x8196B06Fu, 0xD24EFA19u, 0x7D8048BBu, 0x713BD06Fu)) + 0x753AD6ADu;
+            return (fold_to_uint(v) * uint4(0x7069770Du, 0xD1224537u, 0xE99ED6F3u, 0x48125549u)) + 0xEEE2123Bu;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two double4 vectors into a double value.</summary>

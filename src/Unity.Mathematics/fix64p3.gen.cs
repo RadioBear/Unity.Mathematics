@@ -8,64 +8,60 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Diagnostics;
 
 #pragma warning disable 0660, 0661
 
 namespace Unity.Mathematics
 {
-    [DebuggerTypeProxy(typeof(bool3.DebuggerProxy))]
+    [DebuggerTypeProxy(typeof(fix64p3.DebuggerProxy))]
     [System.Serializable]
-    public partial struct bool3 : System.IEquatable<bool3>
+    public partial struct fix64p3 : System.IEquatable<fix64p3>, IFormattable
     {
-        [MarshalAs(UnmanagedType.U1)]
-        public bool x;
-        [MarshalAs(UnmanagedType.U1)]
-        public bool y;
-        [MarshalAs(UnmanagedType.U1)]
-        public bool z;
+        public fix64p x;
+        public fix64p y;
+        public fix64p z;
 
 
-        /// <summary>Constructs a bool3 vector from three bool values.</summary>
+        /// <summary>Constructs a fix64p3 vector from three fix64p values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool x, bool y, bool z)
+        public fix64p3(fix64p x, fix64p y, fix64p z)
         { 
             this.x = x;
             this.y = y;
             this.z = z;
         }
 
-        /// <summary>Constructs a bool3 vector from a bool value and a bool2 vector.</summary>
+        /// <summary>Constructs a fix64p3 vector from a fix64p value and a fix64p2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool x, bool2 yz)
+        public fix64p3(fix64p x, fix64p2 yz)
         { 
             this.x = x;
             this.y = yz.x;
             this.z = yz.y;
         }
 
-        /// <summary>Constructs a bool3 vector from a bool2 vector and a bool value.</summary>
+        /// <summary>Constructs a fix64p3 vector from a fix64p2 vector and a fix64p value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool2 xy, bool z)
+        public fix64p3(fix64p2 xy, fix64p z)
         { 
             this.x = xy.x;
             this.y = xy.y;
             this.z = z;
         }
 
-        /// <summary>Constructs a bool3 vector from a bool3 vector.</summary>
+        /// <summary>Constructs a fix64p3 vector from a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool3 xyz)
+        public fix64p3(fix64p3 xyz)
         { 
             this.x = xyz.x;
             this.y = xyz.y;
             this.z = xyz.z;
         }
 
-        /// <summary>Constructs a bool3 vector from a single bool value by assigning it to every component.</summary>
+        /// <summary>Constructs a fix64p3 vector from a single fix64p value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool v)
+        public fix64p3(fix64p v)
         {
             this.x = v;
             this.y = v;
@@ -73,1046 +69,1139 @@ namespace Unity.Mathematics
         }
 
 
-        /// <summary>Implicitly converts a single bool value to a bool3 vector by assigning it to every component.</summary>
+        /// <summary>Implicitly converts a single fix64p value to a fix64p3 vector by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static implicit operator bool3(bool v) { return new bool3(v); }
+        public static implicit operator fix64p3(fix64p v) { return new fix64p3(v); }
 
 
-        /// <summary>Returns the result of a componentwise equality operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise multiplication operation on two fix64p3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z); }
+        public static fix64p3 operator * (fix64p3 lhs, fix64p3 rhs) { return new fix64p3 (lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z); }
 
-        /// <summary>Returns the result of a componentwise equality operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise multiplication operation on a fix64p3 vector and a fix64p value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (bool3 lhs, bool rhs) { return new bool3 (lhs.x == rhs, lhs.y == rhs, lhs.z == rhs); }
+        public static fix64p3 operator * (fix64p3 lhs, fix64p rhs) { return new fix64p3 (lhs.x * rhs, lhs.y * rhs, lhs.z * rhs); }
 
-        /// <summary>Returns the result of a componentwise equality operation on a bool value and a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise multiplication operation on a fix64p value and a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (bool lhs, bool3 rhs) { return new bool3 (lhs == rhs.x, lhs == rhs.y, lhs == rhs.z); }
+        public static fix64p3 operator * (fix64p lhs, fix64p3 rhs) { return new fix64p3 (lhs * rhs.x, lhs * rhs.y, lhs * rhs.z); }
 
 
-        /// <summary>Returns the result of a componentwise not equal operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise addition operation on two fix64p3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z); }
+        public static fix64p3 operator + (fix64p3 lhs, fix64p3 rhs) { return new fix64p3 (lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z); }
 
-        /// <summary>Returns the result of a componentwise not equal operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise addition operation on a fix64p3 vector and a fix64p value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (bool3 lhs, bool rhs) { return new bool3 (lhs.x != rhs, lhs.y != rhs, lhs.z != rhs); }
+        public static fix64p3 operator + (fix64p3 lhs, fix64p rhs) { return new fix64p3 (lhs.x + rhs, lhs.y + rhs, lhs.z + rhs); }
 
-        /// <summary>Returns the result of a componentwise not equal operation on a bool value and a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise addition operation on a fix64p value and a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (bool lhs, bool3 rhs) { return new bool3 (lhs != rhs.x, lhs != rhs.y, lhs != rhs.z); }
+        public static fix64p3 operator + (fix64p lhs, fix64p3 rhs) { return new fix64p3 (lhs + rhs.x, lhs + rhs.y, lhs + rhs.z); }
 
 
-        /// <summary>Returns the result of a componentwise not operation on a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise subtraction operation on two fix64p3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator ! (bool3 val) { return new bool3 (!val.x, !val.y, !val.z); }
+        public static fix64p3 operator - (fix64p3 lhs, fix64p3 rhs) { return new fix64p3 (lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z); }
 
-
-        /// <summary>Returns the result of a componentwise bitwise and operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise subtraction operation on a fix64p3 vector and a fix64p value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator & (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z); }
+        public static fix64p3 operator - (fix64p3 lhs, fix64p rhs) { return new fix64p3 (lhs.x - rhs, lhs.y - rhs, lhs.z - rhs); }
 
-        /// <summary>Returns the result of a componentwise bitwise and operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise subtraction operation on a fix64p value and a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator & (bool3 lhs, bool rhs) { return new bool3 (lhs.x & rhs, lhs.y & rhs, lhs.z & rhs); }
+        public static fix64p3 operator - (fix64p lhs, fix64p3 rhs) { return new fix64p3 (lhs - rhs.x, lhs - rhs.y, lhs - rhs.z); }
 
-        /// <summary>Returns the result of a componentwise bitwise and operation on a bool value and a bool3 vector.</summary>
+
+        /// <summary>Returns the result of a componentwise division operation on two fix64p3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator & (bool lhs, bool3 rhs) { return new bool3 (lhs & rhs.x, lhs & rhs.y, lhs & rhs.z); }
+        public static fix64p3 operator / (fix64p3 lhs, fix64p3 rhs) { return new fix64p3 (lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z); }
 
-
-        /// <summary>Returns the result of a componentwise bitwise or operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise division operation on a fix64p3 vector and a fix64p value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator | (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z); }
+        public static fix64p3 operator / (fix64p3 lhs, fix64p rhs) { return new fix64p3 (lhs.x / rhs, lhs.y / rhs, lhs.z / rhs); }
 
-        /// <summary>Returns the result of a componentwise bitwise or operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise division operation on a fix64p value and a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator | (bool3 lhs, bool rhs) { return new bool3 (lhs.x | rhs, lhs.y | rhs, lhs.z | rhs); }
+        public static fix64p3 operator / (fix64p lhs, fix64p3 rhs) { return new fix64p3 (lhs / rhs.x, lhs / rhs.y, lhs / rhs.z); }
 
-        /// <summary>Returns the result of a componentwise bitwise or operation on a bool value and a bool3 vector.</summary>
+
+        /// <summary>Returns the result of a componentwise modulus operation on two fix64p3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator | (bool lhs, bool3 rhs) { return new bool3 (lhs | rhs.x, lhs | rhs.y, lhs | rhs.z); }
+        public static fix64p3 operator % (fix64p3 lhs, fix64p3 rhs) { return new fix64p3 (lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z); }
 
-
-        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise modulus operation on a fix64p3 vector and a fix64p value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator ^ (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z); }
+        public static fix64p3 operator % (fix64p3 lhs, fix64p rhs) { return new fix64p3 (lhs.x % rhs, lhs.y % rhs, lhs.z % rhs); }
 
-        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise modulus operation on a fix64p value and a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator ^ (bool3 lhs, bool rhs) { return new bool3 (lhs.x ^ rhs, lhs.y ^ rhs, lhs.z ^ rhs); }
+        public static fix64p3 operator % (fix64p lhs, fix64p3 rhs) { return new fix64p3 (lhs % rhs.x, lhs % rhs.y, lhs % rhs.z); }
 
-        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on a bool value and a bool3 vector.</summary>
+
+        /// <summary>Returns the result of a componentwise increment operation on a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator ^ (bool lhs, bool3 rhs) { return new bool3 (lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z); }
+        public static fix64p3 operator ++ (fix64p3 val) { return new fix64p3 (++val.x, ++val.y, ++val.z); }
 
 
+        /// <summary>Returns the result of a componentwise decrement operation on a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 operator -- (fix64p3 val) { return new fix64p3 (--val.x, --val.y, --val.z); }
 
 
+        /// <summary>Returns the result of a componentwise less than operation on two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator < (fix64p3 lhs, fix64p3 rhs) { return new bool3 (lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z); }
+
+        /// <summary>Returns the result of a componentwise less than operation on a fix64p3 vector and a fix64p value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator < (fix64p3 lhs, fix64p rhs) { return new bool3 (lhs.x < rhs, lhs.y < rhs, lhs.z < rhs); }
+
+        /// <summary>Returns the result of a componentwise less than operation on a fix64p value and a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator < (fix64p lhs, fix64p3 rhs) { return new bool3 (lhs < rhs.x, lhs < rhs.y, lhs < rhs.z); }
+
+
+        /// <summary>Returns the result of a componentwise less or equal operation on two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator <= (fix64p3 lhs, fix64p3 rhs) { return new bool3 (lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z); }
+
+        /// <summary>Returns the result of a componentwise less or equal operation on a fix64p3 vector and a fix64p value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator <= (fix64p3 lhs, fix64p rhs) { return new bool3 (lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs); }
+
+        /// <summary>Returns the result of a componentwise less or equal operation on a fix64p value and a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator <= (fix64p lhs, fix64p3 rhs) { return new bool3 (lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z); }
+
+
+        /// <summary>Returns the result of a componentwise greater than operation on two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator > (fix64p3 lhs, fix64p3 rhs) { return new bool3 (lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z); }
+
+        /// <summary>Returns the result of a componentwise greater than operation on a fix64p3 vector and a fix64p value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator > (fix64p3 lhs, fix64p rhs) { return new bool3 (lhs.x > rhs, lhs.y > rhs, lhs.z > rhs); }
+
+        /// <summary>Returns the result of a componentwise greater than operation on a fix64p value and a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator > (fix64p lhs, fix64p3 rhs) { return new bool3 (lhs > rhs.x, lhs > rhs.y, lhs > rhs.z); }
+
+
+        /// <summary>Returns the result of a componentwise greater or equal operation on two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator >= (fix64p3 lhs, fix64p3 rhs) { return new bool3 (lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z); }
+
+        /// <summary>Returns the result of a componentwise greater or equal operation on a fix64p3 vector and a fix64p value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator >= (fix64p3 lhs, fix64p rhs) { return new bool3 (lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs); }
+
+        /// <summary>Returns the result of a componentwise greater or equal operation on a fix64p value and a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator >= (fix64p lhs, fix64p3 rhs) { return new bool3 (lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z); }
+
+
+        /// <summary>Returns the result of a componentwise unary minus operation on a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 operator - (fix64p3 val) { return new fix64p3 (-val.x, -val.y, -val.z); }
+
+
+        /// <summary>Returns the result of a componentwise unary plus operation on a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 operator + (fix64p3 val) { return new fix64p3 (+val.x, +val.y, +val.z); }
+
+
+        /// <summary>Returns the result of a componentwise equality operation on two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator == (fix64p3 lhs, fix64p3 rhs) { return new bool3 (lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z); }
+
+        /// <summary>Returns the result of a componentwise equality operation on a fix64p3 vector and a fix64p value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator == (fix64p3 lhs, fix64p rhs) { return new bool3 (lhs.x == rhs, lhs.y == rhs, lhs.z == rhs); }
+
+        /// <summary>Returns the result of a componentwise equality operation on a fix64p value and a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator == (fix64p lhs, fix64p3 rhs) { return new bool3 (lhs == rhs.x, lhs == rhs.y, lhs == rhs.z); }
+
+
+        /// <summary>Returns the result of a componentwise not equal operation on two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator != (fix64p3 lhs, fix64p3 rhs) { return new bool3 (lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z); }
+
+        /// <summary>Returns the result of a componentwise not equal operation on a fix64p3 vector and a fix64p value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator != (fix64p3 lhs, fix64p rhs) { return new bool3 (lhs.x != rhs, lhs.y != rhs, lhs.z != rhs); }
+
+        /// <summary>Returns the result of a componentwise not equal operation on a fix64p value and a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool3 operator != (fix64p lhs, fix64p3 rhs) { return new bool3 (lhs != rhs.x, lhs != rhs.y, lhs != rhs.z); }
+
+
+
+
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxxx
+        public fix64p4 xxxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, x, x); }
+            get { return new fix64p4(x, x, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxxy
+        public fix64p4 xxxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, x, y); }
+            get { return new fix64p4(x, x, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxxz
+        public fix64p4 xxxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, x, z); }
+            get { return new fix64p4(x, x, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxyx
+        public fix64p4 xxyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, y, x); }
+            get { return new fix64p4(x, x, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxyy
+        public fix64p4 xxyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, y, y); }
+            get { return new fix64p4(x, x, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxyz
+        public fix64p4 xxyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, y, z); }
+            get { return new fix64p4(x, x, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxzx
+        public fix64p4 xxzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, z, x); }
+            get { return new fix64p4(x, x, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxzy
+        public fix64p4 xxzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, z, y); }
+            get { return new fix64p4(x, x, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxzz
+        public fix64p4 xxzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, z, z); }
+            get { return new fix64p4(x, x, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyxx
+        public fix64p4 xyxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, x, x); }
+            get { return new fix64p4(x, y, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyxy
+        public fix64p4 xyxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, x, y); }
+            get { return new fix64p4(x, y, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyxz
+        public fix64p4 xyxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, x, z); }
+            get { return new fix64p4(x, y, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyyx
+        public fix64p4 xyyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, y, x); }
+            get { return new fix64p4(x, y, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyyy
+        public fix64p4 xyyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, y, y); }
+            get { return new fix64p4(x, y, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyyz
+        public fix64p4 xyyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, y, z); }
+            get { return new fix64p4(x, y, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyzx
+        public fix64p4 xyzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, z, x); }
+            get { return new fix64p4(x, y, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyzy
+        public fix64p4 xyzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, z, y); }
+            get { return new fix64p4(x, y, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyzz
+        public fix64p4 xyzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, z, z); }
+            get { return new fix64p4(x, y, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzxx
+        public fix64p4 xzxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, x, x); }
+            get { return new fix64p4(x, z, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzxy
+        public fix64p4 xzxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, x, y); }
+            get { return new fix64p4(x, z, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzxz
+        public fix64p4 xzxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, x, z); }
+            get { return new fix64p4(x, z, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzyx
+        public fix64p4 xzyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, y, x); }
+            get { return new fix64p4(x, z, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzyy
+        public fix64p4 xzyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, y, y); }
+            get { return new fix64p4(x, z, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzyz
+        public fix64p4 xzyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, y, z); }
+            get { return new fix64p4(x, z, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzzx
+        public fix64p4 xzzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, z, x); }
+            get { return new fix64p4(x, z, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzzy
+        public fix64p4 xzzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, z, y); }
+            get { return new fix64p4(x, z, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzzz
+        public fix64p4 xzzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, z, z); }
+            get { return new fix64p4(x, z, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxxx
+        public fix64p4 yxxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, x, x); }
+            get { return new fix64p4(y, x, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxxy
+        public fix64p4 yxxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, x, y); }
+            get { return new fix64p4(y, x, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxxz
+        public fix64p4 yxxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, x, z); }
+            get { return new fix64p4(y, x, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxyx
+        public fix64p4 yxyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, y, x); }
+            get { return new fix64p4(y, x, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxyy
+        public fix64p4 yxyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, y, y); }
+            get { return new fix64p4(y, x, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxyz
+        public fix64p4 yxyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, y, z); }
+            get { return new fix64p4(y, x, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxzx
+        public fix64p4 yxzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, z, x); }
+            get { return new fix64p4(y, x, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxzy
+        public fix64p4 yxzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, z, y); }
+            get { return new fix64p4(y, x, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxzz
+        public fix64p4 yxzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, z, z); }
+            get { return new fix64p4(y, x, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyxx
+        public fix64p4 yyxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, x, x); }
+            get { return new fix64p4(y, y, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyxy
+        public fix64p4 yyxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, x, y); }
+            get { return new fix64p4(y, y, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyxz
+        public fix64p4 yyxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, x, z); }
+            get { return new fix64p4(y, y, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyyx
+        public fix64p4 yyyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, y, x); }
+            get { return new fix64p4(y, y, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyyy
+        public fix64p4 yyyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, y, y); }
+            get { return new fix64p4(y, y, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyyz
+        public fix64p4 yyyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, y, z); }
+            get { return new fix64p4(y, y, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyzx
+        public fix64p4 yyzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, z, x); }
+            get { return new fix64p4(y, y, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyzy
+        public fix64p4 yyzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, z, y); }
+            get { return new fix64p4(y, y, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyzz
+        public fix64p4 yyzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, z, z); }
+            get { return new fix64p4(y, y, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzxx
+        public fix64p4 yzxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, x, x); }
+            get { return new fix64p4(y, z, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzxy
+        public fix64p4 yzxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, x, y); }
+            get { return new fix64p4(y, z, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzxz
+        public fix64p4 yzxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, x, z); }
+            get { return new fix64p4(y, z, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzyx
+        public fix64p4 yzyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, y, x); }
+            get { return new fix64p4(y, z, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzyy
+        public fix64p4 yzyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, y, y); }
+            get { return new fix64p4(y, z, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzyz
+        public fix64p4 yzyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, y, z); }
+            get { return new fix64p4(y, z, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzzx
+        public fix64p4 yzzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, z, x); }
+            get { return new fix64p4(y, z, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzzy
+        public fix64p4 yzzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, z, y); }
+            get { return new fix64p4(y, z, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzzz
+        public fix64p4 yzzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, z, z); }
+            get { return new fix64p4(y, z, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxxx
+        public fix64p4 zxxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, x, x); }
+            get { return new fix64p4(z, x, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxxy
+        public fix64p4 zxxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, x, y); }
+            get { return new fix64p4(z, x, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxxz
+        public fix64p4 zxxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, x, z); }
+            get { return new fix64p4(z, x, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxyx
+        public fix64p4 zxyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, y, x); }
+            get { return new fix64p4(z, x, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxyy
+        public fix64p4 zxyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, y, y); }
+            get { return new fix64p4(z, x, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxyz
+        public fix64p4 zxyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, y, z); }
+            get { return new fix64p4(z, x, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxzx
+        public fix64p4 zxzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, z, x); }
+            get { return new fix64p4(z, x, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxzy
+        public fix64p4 zxzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, z, y); }
+            get { return new fix64p4(z, x, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxzz
+        public fix64p4 zxzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, z, z); }
+            get { return new fix64p4(z, x, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyxx
+        public fix64p4 zyxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, x, x); }
+            get { return new fix64p4(z, y, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyxy
+        public fix64p4 zyxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, x, y); }
+            get { return new fix64p4(z, y, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyxz
+        public fix64p4 zyxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, x, z); }
+            get { return new fix64p4(z, y, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyyx
+        public fix64p4 zyyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, y, x); }
+            get { return new fix64p4(z, y, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyyy
+        public fix64p4 zyyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, y, y); }
+            get { return new fix64p4(z, y, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyyz
+        public fix64p4 zyyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, y, z); }
+            get { return new fix64p4(z, y, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyzx
+        public fix64p4 zyzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, z, x); }
+            get { return new fix64p4(z, y, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyzy
+        public fix64p4 zyzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, z, y); }
+            get { return new fix64p4(z, y, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyzz
+        public fix64p4 zyzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, z, z); }
+            get { return new fix64p4(z, y, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzxx
+        public fix64p4 zzxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, x, x); }
+            get { return new fix64p4(z, z, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzxy
+        public fix64p4 zzxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, x, y); }
+            get { return new fix64p4(z, z, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzxz
+        public fix64p4 zzxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, x, z); }
+            get { return new fix64p4(z, z, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzyx
+        public fix64p4 zzyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, y, x); }
+            get { return new fix64p4(z, z, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzyy
+        public fix64p4 zzyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, y, y); }
+            get { return new fix64p4(z, z, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzyz
+        public fix64p4 zzyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, y, z); }
+            get { return new fix64p4(z, z, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzzx
+        public fix64p4 zzzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, z, x); }
+            get { return new fix64p4(z, z, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzzy
+        public fix64p4 zzzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, z, y); }
+            get { return new fix64p4(z, z, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzzz
+        public fix64p4 zzzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, z, z); }
+            get { return new fix64p4(z, z, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xxx
+        public fix64p3 xxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, x, x); }
+            get { return new fix64p3(x, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xxy
+        public fix64p3 xxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, x, y); }
+            get { return new fix64p3(x, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xxz
+        public fix64p3 xxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, x, z); }
+            get { return new fix64p3(x, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xyx
+        public fix64p3 xyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, y, x); }
+            get { return new fix64p3(x, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xyy
+        public fix64p3 xyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, y, y); }
+            get { return new fix64p3(x, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xyz
+        public fix64p3 xyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, y, z); }
+            get { return new fix64p3(x, y, z); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { x = value.x; y = value.y; z = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xzx
+        public fix64p3 xzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, z, x); }
+            get { return new fix64p3(x, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xzy
+        public fix64p3 xzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, z, y); }
+            get { return new fix64p3(x, z, y); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { x = value.x; z = value.y; y = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xzz
+        public fix64p3 xzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, z, z); }
+            get { return new fix64p3(x, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yxx
+        public fix64p3 yxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, x, x); }
+            get { return new fix64p3(y, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yxy
+        public fix64p3 yxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, x, y); }
+            get { return new fix64p3(y, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yxz
+        public fix64p3 yxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, x, z); }
+            get { return new fix64p3(y, x, z); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { y = value.x; x = value.y; z = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yyx
+        public fix64p3 yyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, y, x); }
+            get { return new fix64p3(y, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yyy
+        public fix64p3 yyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, y, y); }
+            get { return new fix64p3(y, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yyz
+        public fix64p3 yyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, y, z); }
+            get { return new fix64p3(y, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yzx
+        public fix64p3 yzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, z, x); }
+            get { return new fix64p3(y, z, x); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { y = value.x; z = value.y; x = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yzy
+        public fix64p3 yzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, z, y); }
+            get { return new fix64p3(y, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yzz
+        public fix64p3 yzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, z, z); }
+            get { return new fix64p3(y, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zxx
+        public fix64p3 zxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, x, x); }
+            get { return new fix64p3(z, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zxy
+        public fix64p3 zxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, x, y); }
+            get { return new fix64p3(z, x, y); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { z = value.x; x = value.y; y = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zxz
+        public fix64p3 zxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, x, z); }
+            get { return new fix64p3(z, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zyx
+        public fix64p3 zyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, y, x); }
+            get { return new fix64p3(z, y, x); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { z = value.x; y = value.y; x = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zyy
+        public fix64p3 zyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, y, y); }
+            get { return new fix64p3(z, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zyz
+        public fix64p3 zyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, y, z); }
+            get { return new fix64p3(z, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zzx
+        public fix64p3 zzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, z, x); }
+            get { return new fix64p3(z, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zzy
+        public fix64p3 zzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, z, y); }
+            get { return new fix64p3(z, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zzz
+        public fix64p3 zzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, z, z); }
+            get { return new fix64p3(z, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 xx
+        public fix64p2 xx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(x, x); }
+            get { return new fix64p2(x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 xy
+        public fix64p2 xy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(x, y); }
+            get { return new fix64p2(x, y); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { x = value.x; y = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 xz
+        public fix64p2 xz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(x, z); }
+            get { return new fix64p2(x, z); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { x = value.x; z = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 yx
+        public fix64p2 yx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(y, x); }
+            get { return new fix64p2(y, x); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { y = value.x; x = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 yy
+        public fix64p2 yy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(y, y); }
+            get { return new fix64p2(y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 yz
+        public fix64p2 yz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(y, z); }
+            get { return new fix64p2(y, z); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { y = value.x; z = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 zx
+        public fix64p2 zx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(z, x); }
+            get { return new fix64p2(z, x); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { z = value.x; x = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 zy
+        public fix64p2 zy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(z, y); }
+            get { return new fix64p2(z, y); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { z = value.x; y = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 zz
+        public fix64p2 zz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(z, z); }
+            get { return new fix64p2(z, z); }
         }
 
 
 
-        /// <summary>Returns the bool element at a specified index.</summary>
-        unsafe public bool this[int index]
+        /// <summary>Returns the fix64p element at a specified index.</summary>
+        unsafe public fix64p this[int index]
         {
             get
             {
@@ -1120,7 +1209,7 @@ namespace Unity.Mathematics
                 if ((uint)index >= 3)
                     throw new System.ArgumentException("index must be between[0...2]");
 #endif
-                fixed (bool3* array = &this) { return ((bool*)array)[index]; }
+                fixed (fix64p3* array = &this) { return ((fix64p*)array)[index]; }
             }
             set
             {
@@ -1128,36 +1217,43 @@ namespace Unity.Mathematics
                 if ((uint)index >= 3)
                     throw new System.ArgumentException("index must be between[0...2]");
 #endif
-                fixed (bool* array = &x) { array[index] = value; }
+                fixed (fix64p* array = &x) { array[index] = value; }
             }
         }
 
-        /// <summary>Returns true if the bool3 is equal to a given bool3, false otherwise.</summary>
+        /// <summary>Returns true if the fix64p3 is equal to a given fix64p3, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Equals(bool3 rhs) { return x == rhs.x && y == rhs.y && z == rhs.z; }
+        public bool Equals(fix64p3 rhs) { return x == rhs.x && y == rhs.y && z == rhs.z; }
 
-        /// <summary>Returns true if the bool3 is equal to a given bool3, false otherwise.</summary>
-        public override bool Equals(object o) { return Equals((bool3)o); }
+        /// <summary>Returns true if the fix64p3 is equal to a given fix64p3, false otherwise.</summary>
+        public override bool Equals(object o) { return Equals((fix64p3)o); }
 
 
-        /// <summary>Returns a hash code for the bool3.</summary>
+        /// <summary>Returns a hash code for the fix64p3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode() { return (int)math.hash(this); }
 
 
-        /// <summary>Returns a string representation of the bool3.</summary>
+        /// <summary>Returns a string representation of the fix64p3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override string ToString()
         {
-            return string.Format("bool3({0}, {1}, {2})", x, y, z);
+            return string.Format("fix64p3({0}, {1}, {2})", x, y, z);
+        }
+
+        /// <summary>Returns a string representation of the fix64p3 using a specified format and culture-specific format information.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return string.Format("fix64p3({0}, {1}, {2})", x.ToString(format, formatProvider), y.ToString(format, formatProvider), z.ToString(format, formatProvider));
         }
 
         internal sealed class DebuggerProxy
         {
-            public bool x;
-            public bool y;
-            public bool z;
-            public DebuggerProxy(bool3 v)
+            public fix64p x;
+            public fix64p y;
+            public fix64p z;
+            public DebuggerProxy(fix64p3 v)
             {
                 x = v.x;
                 y = v.y;
@@ -1169,75 +1265,75 @@ namespace Unity.Mathematics
 
     public static partial class math
     {
-        /// <summary>Returns a bool3 vector constructed from three bool values.</summary>
+        /// <summary>Returns a fix64p3 vector constructed from three fix64p values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool x, bool y, bool z) { return new bool3(x, y, z); }
+        public static fix64p3 fix64p3(fix64p x, fix64p y, fix64p z) { return new fix64p3(x, y, z); }
 
-        /// <summary>Returns a bool3 vector constructed from a bool value and a bool2 vector.</summary>
+        /// <summary>Returns a fix64p3 vector constructed from a fix64p value and a fix64p2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool x, bool2 yz) { return new bool3(x, yz); }
+        public static fix64p3 fix64p3(fix64p x, fix64p2 yz) { return new fix64p3(x, yz); }
 
-        /// <summary>Returns a bool3 vector constructed from a bool2 vector and a bool value.</summary>
+        /// <summary>Returns a fix64p3 vector constructed from a fix64p2 vector and a fix64p value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool2 xy, bool z) { return new bool3(xy, z); }
+        public static fix64p3 fix64p3(fix64p2 xy, fix64p z) { return new fix64p3(xy, z); }
 
-        /// <summary>Returns a bool3 vector constructed from a bool3 vector.</summary>
+        /// <summary>Returns a fix64p3 vector constructed from a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool3 xyz) { return new bool3(xyz); }
+        public static fix64p3 fix64p3(fix64p3 xyz) { return new fix64p3(xyz); }
 
-        /// <summary>Returns a bool3 vector constructed from a single bool value by assigning it to every component.</summary>
+        /// <summary>Returns a fix64p3 vector constructed from a single fix64p value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool v) { return new bool3(v); }
+        public static fix64p3 fix64p3(fix64p v) { return new fix64p3(v); }
 
-        /// <summary>Returns a uint hash code of a bool3 vector.</summary>
+        /// <summary>Returns a uint hash code of a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(bool3 v)
+        public static uint hash(fix64p3 v)
         {
-            return csum(select(uint3(0xCF6EBA1Du, 0x9D88E5A1u, 0xEADF0775u), uint3(0x747A9D7Bu, 0x4111F799u, 0xB5F05AF1u), v));
+            return csum(fold_to_uint(v) * uint3(0x509B84C9u, 0x91D13847u, 0x52F7230Fu)) + 0xCF286E83u;
         }
 
         /// <summary>
-        /// Returns a uint3 vector hash code of a bool3 vector.
+        /// Returns a uint3 vector hash code of a fix64p3 vector.
         /// When multiple elements are to be hashes together, it can more efficient to calculate and combine wide hash
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 hashwide(bool3 v)
+        public static uint3 hashwide(fix64p3 v)
         {
-            return (select(uint3(0xFD80290Bu, 0x8B65ADB7u, 0xDFF4F563u), uint3(0x7069770Du, 0xD1224537u, 0xE99ED6F3u), v));
+            return (fold_to_uint(v) * uint3(0xE121E6ADu, 0xC9CA1249u, 0x69B60C81u)) + 0xE0EB6C25u;
         }
 
-        /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool value.</summary>
+        /// <summary>Returns the result of specified shuffling of the components from two fix64p3 vectors into a fix64p value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool shuffle(bool3 a, bool3 b, ShuffleComponent x)
+        public static fix64p shuffle(fix64p3 a, fix64p3 b, ShuffleComponent x)
         {
             return select_shuffle_component(a, b, x);
         }
 
-        /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool2 vector.</summary>
+        /// <summary>Returns the result of specified shuffling of the components from two fix64p3 vectors into a fix64p2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 shuffle(bool3 a, bool3 b, ShuffleComponent x, ShuffleComponent y)
+        public static fix64p2 shuffle(fix64p3 a, fix64p3 b, ShuffleComponent x, ShuffleComponent y)
         {
-            return bool2(
+            return fix64p2(
                 select_shuffle_component(a, b, x),
                 select_shuffle_component(a, b, y));
         }
 
-        /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool3 vector.</summary>
+        /// <summary>Returns the result of specified shuffling of the components from two fix64p3 vectors into a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 shuffle(bool3 a, bool3 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
+        public static fix64p3 shuffle(fix64p3 a, fix64p3 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
         {
-            return bool3(
+            return fix64p3(
                 select_shuffle_component(a, b, x),
                 select_shuffle_component(a, b, y),
                 select_shuffle_component(a, b, z));
         }
 
-        /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool4 vector.</summary>
+        /// <summary>Returns the result of specified shuffling of the components from two fix64p3 vectors into a fix64p4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 shuffle(bool3 a, bool3 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z, ShuffleComponent w)
+        public static fix64p4 shuffle(fix64p3 a, fix64p3 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z, ShuffleComponent w)
         {
-            return bool4(
+            return fix64p4(
                 select_shuffle_component(a, b, x),
                 select_shuffle_component(a, b, y),
                 select_shuffle_component(a, b, z),
@@ -1245,7 +1341,7 @@ namespace Unity.Mathematics
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool select_shuffle_component(bool3 a, bool3 b, ShuffleComponent component)
+        internal static fix64p select_shuffle_component(fix64p3 a, fix64p3 b, ShuffleComponent component)
         {
             switch(component)
             {

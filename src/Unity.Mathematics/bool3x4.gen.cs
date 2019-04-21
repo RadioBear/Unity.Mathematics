@@ -202,10 +202,10 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(bool3x4 v)
         {
-            return csum(select(uint3(0x83B58237u, 0x833E3E29u, 0xA9D919BFu), uint3(0xC3EC1D97u, 0xB8B208C7u, 0x5D3ED947u), v.c0) + 
-                        select(uint3(0x4473BBB1u, 0xCBA11D5Fu, 0x685835CFu), uint3(0xC3D32AE1u, 0xB966942Fu, 0xFE9856B3u), v.c1) + 
-                        select(uint3(0xFA3A3285u, 0xAD55999Du, 0xDCDD5341u), uint3(0x94DDD769u, 0xA1E92D39u, 0x4583C801u), v.c2) + 
-                        select(uint3(0x9536A0F5u, 0xAF816615u, 0x9AF8D62Du), uint3(0xE3600729u, 0x5F17300Du, 0x670D6809u), v.c3));
+            return csum(select(uint3(0x9D1B1D9Bu, 0xF842F5C1u, 0xA47EC335u), uint3(0xA477DF57u, 0xC4B1493Fu, 0xBA0966D3u), v.c0) + 
+                        select(uint3(0xAFBEE253u, 0x5B419C01u, 0x515D90F5u), uint3(0xEC9F68F3u, 0xF9EA92D5u, 0xC2FAFCB9u), v.c1) + 
+                        select(uint3(0x616E9CA1u, 0xC5C5394Bu, 0xCAE78587u), uint3(0x7A1541C9u, 0xF83BD927u, 0x6A243BCBu), v.c2) + 
+                        select(uint3(0x509B84C9u, 0x91D13847u, 0x52F7230Fu), uint3(0xCF286E83u, 0xE121E6ADu, 0xC9CA1249u), v.c3));
         }
 
         /// <summary>
@@ -216,10 +216,10 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint3 hashwide(bool3x4 v)
         {
-            return (select(uint3(0x7AF32C49u, 0xAE131389u, 0x5D1B165Bu), uint3(0x87096CD7u, 0x4C7F6DD1u, 0x4822A3E9u), v.c0) + 
-                    select(uint3(0xAAC3C25Du, 0xD21D0945u, 0x88FCAB2Du), uint3(0x614DA60Du, 0x5BA2C50Bu, 0x8C455ACBu), v.c1) + 
-                    select(uint3(0xCD266C89u, 0xF1852A33u, 0x77E35E77u), uint3(0x863E3729u, 0xE191B035u, 0x68586FAFu), v.c2) + 
-                    select(uint3(0xD4DFF6D3u, 0xCB634F4Du, 0x9B13B92Du), uint3(0x4ABF0813u, 0x86068063u, 0xD75513F9u), v.c3));
+            return (select(uint3(0x69B60C81u, 0xE0EB6C25u, 0xF648BEABu), uint3(0x6BDB2B07u, 0xEF63C699u, 0x9001903Fu), v.c0) + 
+                    select(uint3(0xA895B9CDu, 0x9D23B201u, 0x4B01D3E1u), uint3(0x7461CA0Du, 0x79725379u, 0xD6258E5Bu), v.c1) + 
+                    select(uint3(0xEE390C97u, 0x9C8A2F05u, 0x4DDC6509u), uint3(0x7CF083CBu, 0x5C4D6CEDu, 0xF9137117u), v.c2) + 
+                    select(uint3(0xE857DCE1u, 0xF62213C5u, 0x9CDAA959u), uint3(0xAA269ABFu, 0xD54BA36Fu, 0xFD0847B9u), v.c3));
         }
 
     }

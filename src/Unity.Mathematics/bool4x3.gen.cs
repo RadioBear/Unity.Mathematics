@@ -200,9 +200,9 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(bool4x3 v)
         {
-            return csum(select(uint4(0xEADF0775u, 0x747A9D7Bu, 0x4111F799u, 0xB5F05AF1u), uint4(0xFD80290Bu, 0x8B65ADB7u, 0xDFF4F563u, 0x7069770Du), v.c0) + 
-                        select(uint4(0xD1224537u, 0xE99ED6F3u, 0x48125549u, 0xEEE2123Bu), uint4(0xE3AD9FE5u, 0xCE1CF8BFu, 0x7BE39F3Bu, 0xFAB9913Fu), v.c1) + 
-                        select(uint4(0xB4501269u, 0xE04B89FDu, 0xDB3DE101u, 0x7B6D1B4Bu), uint4(0x58399E77u, 0x5EAC29C9u, 0xFC6014F9u, 0x6BF6693Fu), v.c2));
+            return csum(select(uint4(0x9DF50593u, 0xF18EEB85u, 0x9E19BFC3u, 0x8196B06Fu), uint4(0xD24EFA19u, 0x7D8048BBu, 0x713BD06Fu, 0x753AD6ADu), v.c0) + 
+                        select(uint4(0xD19764C7u, 0xB5D0BF63u, 0xF9102C5Fu, 0x9881FB9Fu), uint4(0x56A1530Du, 0x804B722Du, 0x738E50E5u, 0x4FC93C25u), v.c1) + 
+                        select(uint4(0xCD0445A5u, 0xD2B90D9Bu, 0xD35C9B2Du, 0xA10D9E27u), uint4(0x568DAAA9u, 0x7530254Fu, 0x9F090439u, 0x5E9F85C9u), v.c2));
         }
 
         /// <summary>
@@ -213,9 +213,9 @@ namespace Unity.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint4 hashwide(bool4x3 v)
         {
-            return (select(uint4(0x9D1B1D9Bu, 0xF842F5C1u, 0xA47EC335u, 0xA477DF57u), uint4(0xC4B1493Fu, 0xBA0966D3u, 0xAFBEE253u, 0x5B419C01u), v.c0) + 
-                    select(uint4(0x515D90F5u, 0xEC9F68F3u, 0xF9EA92D5u, 0xC2FAFCB9u), uint4(0x616E9CA1u, 0xC5C5394Bu, 0xCAE78587u, 0x7A1541C9u), v.c1) + 
-                    select(uint4(0xF83BD927u, 0x6A243BCBu, 0x509B84C9u, 0x91D13847u), uint4(0x52F7230Fu, 0xCF286E83u, 0xE121E6ADu, 0xC9CA1249u), v.c2));
+            return (select(uint4(0x8C4CA03Fu, 0xB8D969EDu, 0xAC5DB57Bu, 0xA91A02EDu), uint4(0xB3C49313u, 0xF43A9ABBu, 0x84E7E01Bu, 0x8E055BE5u), v.c0) + 
+                    select(uint4(0x6E624EB7u, 0x7383ED49u, 0xDD49C23Bu, 0xEBD0D005u), uint4(0x91475DF7u, 0x55E84827u, 0x90A285BBu, 0x5D19E1D5u), v.c1) + 
+                    select(uint4(0xFAAF07DDu, 0x625C45BDu, 0xC9F27FCBu, 0x6D2523B1u), uint4(0x6E2BF6A9u, 0xCC74B3B7u, 0x83B58237u, 0x833E3E29u), v.c2));
         }
 
     }
