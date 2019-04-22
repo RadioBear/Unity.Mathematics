@@ -161,6 +161,16 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                     return "" + value + ".0f";
                 case "double":
                     return "" + value + ".0";
+                case "fix64p":
+                    if(value == 0)
+                    {
+                        return "fix64p.zero";
+                    }
+                    if (value == 1)
+                    {
+                        return "fix64p.One";
+                    }
+                    return "fix64p(" + value + "L)";
                 default:
                     return "";
             }
@@ -289,7 +299,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
 
         private void GenerateStaticFields(StringBuilder str)
         {
-            if (m_BaseType == "int" || m_BaseType == "uint" || m_BaseType == "half" || m_BaseType == "float" || m_BaseType == "double")
+            if (m_BaseType == "int" || m_BaseType == "uint" || m_BaseType == "half" || m_BaseType == "float" || m_BaseType == "double" || m_BaseType == "fix64p")
             {
                 string zeroStr = ToTypedLiteral(m_BaseType, 0);
 
@@ -1979,7 +1989,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
 
                 if(isScalar)
                 {
-                    string value = m_BaseType == "bool" ? "true" : m_BaseType == "uint" ? "17u" : m_BaseType == "int" ? "17" : m_BaseType == "float" ? "17.0f" : m_BaseType == "double" ? "17.0" : "";
+                    string value = m_BaseType == "bool" ? "true" : m_BaseType == "uint" ? "17u" : m_BaseType == "int" ? "17" : m_BaseType == "float" ? "17.0f" : m_BaseType == "double" ? "17.0" : m_BaseType == "fix64p" ? "new fix64p(17.0f)" : "";
                     str.Append("(" + value + ");\n");
 
                     for (int row = 0; row < m_Rows; row++)
@@ -1989,7 +1999,7 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                 }
                 else
                 {
-                    string[] values = (from row in Enumerable.Range(0, m_Rows) select m_BaseType == "bool" ? ((row & 1) != 0 ? "true" : "false") : "" + (row + 1)).ToArray();
+                    string[] values = (from row in Enumerable.Range(0, m_Rows) select m_BaseType == "bool" ? ((row & 1) != 0 ? "true" : "false") : m_BaseType == "fix64p" ? "new fix64p(" + (row + 1) + "f)" : "" + (row + 1)).ToArray();
                     AddParenthesized(str, values);
                     str.Append(";\n");
 
@@ -2041,6 +2051,8 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                 float float_b = 0.0f;
                 double double_a = 0.0;
                 double double_b = 0.0;
+                float fix64p_a = 0.0f;
+                float fix64p_b = 0.0f;
 
                 for (int i = 0; i < numValues; i++)
                 {
@@ -2184,11 +2196,38 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                             case "--": resultValue = "" + (isPrefix ? --double_a : double_a--).ToString("R"); break;
                         }
                     }
+                    else if (m_BaseType == "fix64p")
+                    {
+                        if (i == 0 || lhsWide) fix64p_a = (float)rnd.NextDouble() * 1024.0f - 512.0f;
+                        if (i == 0 || rhsWide) fix64p_b = (float)rnd.NextDouble() * 1024.0f - 512.0f;
+
+                        lhsValue = "new fix64p(" + fix64p_a.ToString("R") + "f)";
+                        rhsValue = "new fix64p(" + fix64p_b.ToString("R") + "f)";
+                        switch (op)
+                        {
+                            case "+": resultValue = "" + (isBinary ? (fix64p_a + fix64p_b) : +fix64p_a).ToString("R") + "f"; break;
+                            case "-": resultValue = "" + (isBinary ? (fix64p_a - fix64p_b) : -fix64p_a).ToString("R") + "f"; break;
+                            case "*": resultValue = "" + (fix64p_a * fix64p_b).ToString("R") + "f"; break;
+                            case "/": resultValue = "" + (fix64p_a / fix64p_b).ToString("R") + "f"; break;
+                            case "%": resultValue = "" + (fix64p_a % fix64p_b).ToString("R") + "f"; break;
+
+                            case "<": resultValue = (fix64p_a < fix64p_b) ? "true" : "false"; break;
+                            case ">": resultValue = (fix64p_a > fix64p_b) ? "true" : "false"; break;
+                            case "==": resultValue = (fix64p_a == fix64p_b) ? "true" : "false"; break;
+                            case "!=": resultValue = (fix64p_a != fix64p_b) ? "true" : "false"; break;
+                            case "<=": resultValue = (fix64p_a <= fix64p_b) ? "true" : "false"; break;
+                            case ">=": resultValue = (fix64p_a >= fix64p_b) ? "true" : "false"; break;
+
+                            case "++": resultValue = "" + (isPrefix ? ++fix64p_a : fix64p_a++).ToString("R") + "f"; break;
+                            case "--": resultValue = "" + (isPrefix ? --fix64p_a : fix64p_a--).ToString("R") + "f"; break;
+                        }
+                    }
 
                     if (i == 0 || lhsWide) lhsValues[i] = lhsValue;
                     if (i == 0 || rhsWide) rhsValues[i] = rhsValue;
                     resultValues[i] = resultValue;
                 }
+
                     
                 str.AppendFormat("\t\t\t{0} a{1} = ", lhsType, pass);
                 if (lhsWide) str.Append(lhsType);
@@ -2240,8 +2279,8 @@ namespace Unity.Mathematics.Mathematics.CodeGen
 
                 string resultType = ToTypeName(m_BaseType, resultComponents, 1);
                 str.AppendFormat("\t\t\t{0} a = {0}", m_TypeName);
-                var a_data = (from row in Enumerable.Range(0, m_Rows) select m_BaseType == "bool" ? ((row & 1) != 0 ? "true" : "false") : "" + (row)).ToArray();
-                var b_data = (from row in Enumerable.Range(0, m_Rows) select m_BaseType == "bool" ? ((row & 1) != 1 ? "true" : "false") : "" + (row + m_Rows)).ToArray();
+                var a_data = (from row in Enumerable.Range(0, m_Rows) select m_BaseType == "bool" ? ((row & 1) != 0 ? "true" : "false") : m_BaseType == "fix64p" ? "new fix64p(" + (row) + "f)" : "" + (row)).ToArray();
+                var b_data = (from row in Enumerable.Range(0, m_Rows) select m_BaseType == "bool" ? ((row & 1) != 1 ? "true" : "false") : m_BaseType == "fix64p" ? "new fix64p(" + (row) + "f)" : "" + (row + m_Rows)).ToArray();
 
                 AddParenthesized(str, a_data);
                 str.Append(";\n");

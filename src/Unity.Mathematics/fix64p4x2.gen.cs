@@ -19,6 +19,8 @@ namespace Unity.Mathematics
         public fix64p4 c0;
         public fix64p4 c1;
 
+        /// <summary>fix64p4x2 zero value.</summary>
+        public static readonly fix64p4x2 zero;
 
         /// <summary>Constructs a fix64p4x2 matrix from two fix64p4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

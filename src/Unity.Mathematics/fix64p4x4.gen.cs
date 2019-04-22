@@ -21,6 +21,11 @@ namespace Unity.Mathematics
         public fix64p4 c2;
         public fix64p4 c3;
 
+        /// <summary>fix64p4x4 identity transform.</summary>
+        public static readonly fix64p4x4 identity = new fix64p4x4(fix64p.One, fix64p.zero, fix64p.zero, fix64p.zero,   fix64p.zero, fix64p.One, fix64p.zero, fix64p.zero,   fix64p.zero, fix64p.zero, fix64p.One, fix64p.zero,   fix64p.zero, fix64p.zero, fix64p.zero, fix64p.One);
+
+        /// <summary>fix64p4x4 zero value.</summary>
+        public static readonly fix64p4x4 zero;
 
         /// <summary>Constructs a fix64p4x4 matrix from four fix64p4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

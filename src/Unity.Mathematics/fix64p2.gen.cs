@@ -21,6 +21,8 @@ namespace Unity.Mathematics
         public fix64p x;
         public fix64p y;
 
+        /// <summary>fix64p2 zero value.</summary>
+        public static readonly fix64p2 zero;
 
         /// <summary>Constructs a fix64p2 vector from two fix64p values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -9,6 +9,9 @@ namespace Unity.Mathematics
     /// </summary>
     public partial struct fix64p : System.IEquatable<fix64p>, System.IComparable<fix64p>, IFormattable
     {
+        /// <summary>
+        /// Raw value
+        /// </summary>
         public long value;
 
         /// <summary>Constructs a fix64p value from a fix64p value.</summary>
@@ -45,6 +48,7 @@ namespace Unity.Mathematics
         public static readonly fix64p MinValue = new fix64p(MIN_VALUE);
         public static readonly fix64p One = new fix64p(ONE);
         public static readonly fix64p Zero = new fix64p();
+        public static readonly fix64p zero = new fix64p();
         /// <summary>
         /// The value of Pi
         /// </summary>

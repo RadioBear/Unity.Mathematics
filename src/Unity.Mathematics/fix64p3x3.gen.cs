@@ -20,6 +20,11 @@ namespace Unity.Mathematics
         public fix64p3 c1;
         public fix64p3 c2;
 
+        /// <summary>fix64p3x3 identity transform.</summary>
+        public static readonly fix64p3x3 identity = new fix64p3x3(fix64p.One, fix64p.zero, fix64p.zero,   fix64p.zero, fix64p.One, fix64p.zero,   fix64p.zero, fix64p.zero, fix64p.One);
+
+        /// <summary>fix64p3x3 zero value.</summary>
+        public static readonly fix64p3x3 zero;
 
         /// <summary>Constructs a fix64p3x3 matrix from three fix64p3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

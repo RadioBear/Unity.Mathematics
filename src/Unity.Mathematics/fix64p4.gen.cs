@@ -23,6 +23,8 @@ namespace Unity.Mathematics
         public fix64p z;
         public fix64p w;
 
+        /// <summary>fix64p4 zero value.</summary>
+        public static readonly fix64p4 zero;
 
         /// <summary>Constructs a fix64p4 vector from four fix64p values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

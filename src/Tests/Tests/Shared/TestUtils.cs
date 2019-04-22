@@ -83,6 +83,10 @@ namespace Unity.Mathematics.Tests
             }
         }
 
+        public static void AreEqual(fix64p a, fix64p b, float delta = 0.0f)
+        {
+            Assert.AreEqual((float)a, (float)b, delta);
+        }
 
         // bool
         public static void AreEqual(bool2 a, bool2 b)
@@ -692,6 +696,93 @@ namespace Unity.Mathematics.Tests
             AreEqual(a.c2, b.c2, maxUlp, signedZeroEqual);
             AreEqual(a.c3, b.c3, maxUlp, signedZeroEqual);
         }
+
+        // fix64p
+        public static void AreEqual(fix64p2 a, fix64p2 b, float delta = 0.0f)
+        {
+            AreEqual(a.x, b.x, delta);
+            AreEqual(a.y, b.y, delta);
+        }
+
+        public static void AreEqual(fix64p3 a, fix64p3 b, float delta = 0.0f)
+        {
+            AreEqual(a.x, b.x, delta);
+            AreEqual(a.y, b.y, delta);
+            AreEqual(a.z, b.z, delta);
+        }
+
+        public static void AreEqual(fix64p4 a, fix64p4 b, float delta = 0.0f)
+        {
+            AreEqual(a.x, b.x, delta);
+            AreEqual(a.y, b.y, delta);
+            AreEqual(a.z, b.z, delta);
+            AreEqual(a.w, b.w, delta);
+        }
+
+        public static void AreEqual(fix64p2x2 a, fix64p2x2 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+        }
+
+        public static void AreEqual(fix64p3x2 a, fix64p3x2 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+        }
+
+        public static void AreEqual(fix64p4x2 a, fix64p4x2 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+        }
+
+        public static void AreEqual(fix64p2x3 a, fix64p2x3 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+            AreEqual(a.c2, b.c2, delta);
+        }
+
+        public static void AreEqual(fix64p3x3 a, fix64p3x3 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+            AreEqual(a.c2, b.c2, delta);
+        }
+
+        public static void AreEqual(fix64p4x3 a, fix64p4x3 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+            AreEqual(a.c2, b.c2, delta);
+        }
+
+        public static void AreEqual(fix64p2x4 a, fix64p2x4 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+            AreEqual(a.c2, b.c2, delta);
+            AreEqual(a.c3, b.c3, delta);
+        }
+        
+        public static void AreEqual(fix64p3x4 a, fix64p3x4 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+            AreEqual(a.c2, b.c2, delta);
+            AreEqual(a.c3, b.c3, delta);
+        }
+        
+        public static void AreEqual(fix64p4x4 a, fix64p4x4 b, float delta = 0.0f)
+        {
+            AreEqual(a.c0, b.c0, delta);
+            AreEqual(a.c1, b.c1, delta);
+            AreEqual(a.c2, b.c2, delta);
+            AreEqual(a.c3, b.c3, delta);
+        }
+
+
 
         public static void AreEqual(quaternion a, quaternion b, float delta = 0.0f)
         {

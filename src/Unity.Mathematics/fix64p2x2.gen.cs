@@ -19,6 +19,11 @@ namespace Unity.Mathematics
         public fix64p2 c0;
         public fix64p2 c1;
 
+        /// <summary>fix64p2x2 identity transform.</summary>
+        public static readonly fix64p2x2 identity = new fix64p2x2(fix64p.One, fix64p.zero,   fix64p.zero, fix64p.One);
+
+        /// <summary>fix64p2x2 zero value.</summary>
+        public static readonly fix64p2x2 zero;
 
         /// <summary>Constructs a fix64p2x2 matrix from two fix64p2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
