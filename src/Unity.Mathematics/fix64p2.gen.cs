@@ -48,10 +48,82 @@ namespace Unity.Mathematics
             this.y = v;
         }
 
+        /// <summary>Constructs a fix64p2 vector from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2(bool v)
+        {
+            this.x = v ? fix64p.One : fix64p.zero;
+            this.y = v ? fix64p.One : fix64p.zero;
+        }
+
+        /// <summary>Constructs a fix64p2 vector from a bool2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2(bool2 v)
+        {
+            this.x = v.x ? fix64p.One : fix64p.zero;
+            this.y = v.y ? fix64p.One : fix64p.zero;
+        }
+
+        /// <summary>Constructs a fix64p2 vector from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2(int v)
+        {
+            this.x = (fix64p)v;
+            this.y = (fix64p)v;
+        }
+
+        /// <summary>Constructs a fix64p2 vector from a int2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2(int2 v)
+        {
+            this.x = (fix64p)v.x;
+            this.y = (fix64p)v.y;
+        }
+
+        /// <summary>Constructs a fix64p2 vector from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2(float v)
+        {
+            this.x = (fix64p)v;
+            this.y = (fix64p)v;
+        }
+
+        /// <summary>Constructs a fix64p2 vector from a float2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2(float2 v)
+        {
+            this.x = (fix64p)v.x;
+            this.y = (fix64p)v.y;
+        }
+
 
         /// <summary>Implicitly converts a single fix64p value to a fix64p2 vector by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator fix64p2(fix64p v) { return new fix64p2(v); }
+
+        /// <summary>Explicitly converts a single bool value to a fix64p2 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2(bool v) { return new fix64p2(v); }
+
+        /// <summary>Explicitly converts a bool2 vector to a fix64p2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2(bool2 v) { return new fix64p2(v); }
+
+        /// <summary>Explicitly converts a single int value to a fix64p2 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2(int v) { return new fix64p2(v); }
+
+        /// <summary>Explicitly converts a int2 vector to a fix64p2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2(int2 v) { return new fix64p2(v); }
+
+        /// <summary>Explicitly converts a single float value to a fix64p2 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2(float v) { return new fix64p2(v); }
+
+        /// <summary>Explicitly converts a float2 vector to a fix64p2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2(float2 v) { return new fix64p2(v); }
 
 
         /// <summary>Returns the result of a componentwise multiplication operation on two fix64p2 vectors.</summary>
@@ -522,6 +594,30 @@ namespace Unity.Mathematics
         /// <summary>Returns a fix64p2 vector constructed from a single fix64p value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static fix64p2 fix64p2(fix64p v) { return new fix64p2(v); }
+
+        /// <summary>Returns a fix64p2 vector constructed from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 fix64p2(bool v) { return new fix64p2(v); }
+
+        /// <summary>Return a fix64p2 vector constructed from a bool2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 fix64p2(bool2 v) { return new fix64p2(v); }
+
+        /// <summary>Returns a fix64p2 vector constructed from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 fix64p2(int v) { return new fix64p2(v); }
+
+        /// <summary>Return a fix64p2 vector constructed from a int2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 fix64p2(int2 v) { return new fix64p2(v); }
+
+        /// <summary>Returns a fix64p2 vector constructed from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 fix64p2(float v) { return new fix64p2(v); }
+
+        /// <summary>Return a fix64p2 vector constructed from a float2 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 fix64p2(float2 v) { return new fix64p2(v); }
 
         /// <summary>Returns a uint hash code of a fix64p2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

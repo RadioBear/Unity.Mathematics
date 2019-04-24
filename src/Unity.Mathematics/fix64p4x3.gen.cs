@@ -53,10 +53,88 @@ namespace Unity.Mathematics
             this.c2 = v;
         }
 
+        /// <summary>Constructs a fix64p4x3 matrix from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4x3(bool v)
+        {
+            this.c0 = math.select(new fix64p4(fix64p.zero), new fix64p4(fix64p.One), v);
+            this.c1 = math.select(new fix64p4(fix64p.zero), new fix64p4(fix64p.One), v);
+            this.c2 = math.select(new fix64p4(fix64p.zero), new fix64p4(fix64p.One), v);
+        }
+
+        /// <summary>Constructs a fix64p4x3 matrix from a bool4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4x3(bool4x3 v)
+        {
+            this.c0 = math.select(new fix64p4(fix64p.zero), new fix64p4(fix64p.One), v.c0);
+            this.c1 = math.select(new fix64p4(fix64p.zero), new fix64p4(fix64p.One), v.c1);
+            this.c2 = math.select(new fix64p4(fix64p.zero), new fix64p4(fix64p.One), v.c2);
+        }
+
+        /// <summary>Constructs a fix64p4x3 matrix from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4x3(int v)
+        {
+            this.c0 = (fix64p4)v;
+            this.c1 = (fix64p4)v;
+            this.c2 = (fix64p4)v;
+        }
+
+        /// <summary>Constructs a fix64p4x3 matrix from a int4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4x3(int4x3 v)
+        {
+            this.c0 = (fix64p4)v.c0;
+            this.c1 = (fix64p4)v.c1;
+            this.c2 = (fix64p4)v.c2;
+        }
+
+        /// <summary>Constructs a fix64p4x3 matrix from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4x3(float v)
+        {
+            this.c0 = (fix64p4)v;
+            this.c1 = (fix64p4)v;
+            this.c2 = (fix64p4)v;
+        }
+
+        /// <summary>Constructs a fix64p4x3 matrix from a float4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4x3(float4x3 v)
+        {
+            this.c0 = (fix64p4)v.c0;
+            this.c1 = (fix64p4)v.c1;
+            this.c2 = (fix64p4)v.c2;
+        }
+
 
         /// <summary>Implicitly converts a single fix64p value to a fix64p4x3 matrix by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator fix64p4x3(fix64p v) { return new fix64p4x3(v); }
+
+        /// <summary>Explicitly converts a single bool value to a fix64p4x3 matrix by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4x3(bool v) { return new fix64p4x3(v); }
+
+        /// <summary>Explicitly converts a bool4x3 matrix to a fix64p4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4x3(bool4x3 v) { return new fix64p4x3(v); }
+
+        /// <summary>Explicitly converts a single int value to a fix64p4x3 matrix by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4x3(int v) { return new fix64p4x3(v); }
+
+        /// <summary>Explicitly converts a int4x3 matrix to a fix64p4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4x3(int4x3 v) { return new fix64p4x3(v); }
+
+        /// <summary>Explicitly converts a single float value to a fix64p4x3 matrix by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4x3(float v) { return new fix64p4x3(v); }
+
+        /// <summary>Explicitly converts a float4x3 matrix to a fix64p4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4x3(float4x3 v) { return new fix64p4x3(v); }
 
 
         /// <summary>Returns the result of a componentwise multiplication operation on two fix64p4x3 matrices.</summary>
@@ -287,6 +365,30 @@ namespace Unity.Mathematics
         /// <summary>Returns a fix64p4x3 matrix constructed from a single fix64p value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static fix64p4x3 fix64p4x3(fix64p v) { return new fix64p4x3(v); }
+
+        /// <summary>Returns a fix64p4x3 matrix constructed from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4x3 fix64p4x3(bool v) { return new fix64p4x3(v); }
+
+        /// <summary>Return a fix64p4x3 matrix constructed from a bool4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4x3 fix64p4x3(bool4x3 v) { return new fix64p4x3(v); }
+
+        /// <summary>Returns a fix64p4x3 matrix constructed from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4x3 fix64p4x3(int v) { return new fix64p4x3(v); }
+
+        /// <summary>Return a fix64p4x3 matrix constructed from a int4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4x3 fix64p4x3(int4x3 v) { return new fix64p4x3(v); }
+
+        /// <summary>Returns a fix64p4x3 matrix constructed from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4x3 fix64p4x3(float v) { return new fix64p4x3(v); }
+
+        /// <summary>Return a fix64p4x3 matrix constructed from a float4x3 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4x3 fix64p4x3(float4x3 v) { return new fix64p4x3(v); }
 
         /// <summary>Return the fix64p3x4 transpose of a fix64p4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

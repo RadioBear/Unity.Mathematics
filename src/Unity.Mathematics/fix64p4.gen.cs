@@ -116,10 +116,94 @@ namespace Unity.Mathematics
             this.w = v;
         }
 
+        /// <summary>Constructs a fix64p4 vector from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4(bool v)
+        {
+            this.x = v ? fix64p.One : fix64p.zero;
+            this.y = v ? fix64p.One : fix64p.zero;
+            this.z = v ? fix64p.One : fix64p.zero;
+            this.w = v ? fix64p.One : fix64p.zero;
+        }
+
+        /// <summary>Constructs a fix64p4 vector from a bool4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4(bool4 v)
+        {
+            this.x = v.x ? fix64p.One : fix64p.zero;
+            this.y = v.y ? fix64p.One : fix64p.zero;
+            this.z = v.z ? fix64p.One : fix64p.zero;
+            this.w = v.w ? fix64p.One : fix64p.zero;
+        }
+
+        /// <summary>Constructs a fix64p4 vector from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4(int v)
+        {
+            this.x = (fix64p)v;
+            this.y = (fix64p)v;
+            this.z = (fix64p)v;
+            this.w = (fix64p)v;
+        }
+
+        /// <summary>Constructs a fix64p4 vector from a int4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4(int4 v)
+        {
+            this.x = (fix64p)v.x;
+            this.y = (fix64p)v.y;
+            this.z = (fix64p)v.z;
+            this.w = (fix64p)v.w;
+        }
+
+        /// <summary>Constructs a fix64p4 vector from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4(float v)
+        {
+            this.x = (fix64p)v;
+            this.y = (fix64p)v;
+            this.z = (fix64p)v;
+            this.w = (fix64p)v;
+        }
+
+        /// <summary>Constructs a fix64p4 vector from a float4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p4(float4 v)
+        {
+            this.x = (fix64p)v.x;
+            this.y = (fix64p)v.y;
+            this.z = (fix64p)v.z;
+            this.w = (fix64p)v.w;
+        }
+
 
         /// <summary>Implicitly converts a single fix64p value to a fix64p4 vector by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator fix64p4(fix64p v) { return new fix64p4(v); }
+
+        /// <summary>Explicitly converts a single bool value to a fix64p4 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4(bool v) { return new fix64p4(v); }
+
+        /// <summary>Explicitly converts a bool4 vector to a fix64p4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4(bool4 v) { return new fix64p4(v); }
+
+        /// <summary>Explicitly converts a single int value to a fix64p4 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4(int v) { return new fix64p4(v); }
+
+        /// <summary>Explicitly converts a int4 vector to a fix64p4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4(int4 v) { return new fix64p4(v); }
+
+        /// <summary>Explicitly converts a single float value to a fix64p4 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4(float v) { return new fix64p4(v); }
+
+        /// <summary>Explicitly converts a float4 vector to a fix64p4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p4(float4 v) { return new fix64p4(v); }
 
 
         /// <summary>Returns the result of a componentwise multiplication operation on two fix64p4 vectors.</summary>
@@ -3198,6 +3282,30 @@ namespace Unity.Mathematics
         /// <summary>Returns a fix64p4 vector constructed from a single fix64p value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static fix64p4 fix64p4(fix64p v) { return new fix64p4(v); }
+
+        /// <summary>Returns a fix64p4 vector constructed from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 fix64p4(bool v) { return new fix64p4(v); }
+
+        /// <summary>Return a fix64p4 vector constructed from a bool4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 fix64p4(bool4 v) { return new fix64p4(v); }
+
+        /// <summary>Returns a fix64p4 vector constructed from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 fix64p4(int v) { return new fix64p4(v); }
+
+        /// <summary>Return a fix64p4 vector constructed from a int4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 fix64p4(int4 v) { return new fix64p4(v); }
+
+        /// <summary>Returns a fix64p4 vector constructed from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 fix64p4(float v) { return new fix64p4(v); }
+
+        /// <summary>Return a fix64p4 vector constructed from a float4 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 fix64p4(float4 v) { return new fix64p4(v); }
 
         /// <summary>Returns a uint hash code of a fix64p4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -21,6 +21,13 @@ namespace Unity.Mathematics
             value = x.value;
         }
 
+        /// <summary>Constructs a fix64p value from a int value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p(int v)
+        {
+            value = (long)(v * ONE);
+        }
+
         /// <summary>Constructs a fix64p value from a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public fix64p(float v)
@@ -968,7 +975,10 @@ namespace Unity.Mathematics
         }
 
 
-
+        public static explicit operator fix64p(int value)
+        {
+            return new fix64p(value * ONE);
+        }
         public static explicit operator fix64p(long value)
         {
             return new fix64p(value * ONE);

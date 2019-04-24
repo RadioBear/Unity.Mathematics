@@ -70,10 +70,88 @@ namespace Unity.Mathematics
             this.z = v;
         }
 
+        /// <summary>Constructs a fix64p3 vector from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p3(bool v)
+        {
+            this.x = v ? fix64p.One : fix64p.zero;
+            this.y = v ? fix64p.One : fix64p.zero;
+            this.z = v ? fix64p.One : fix64p.zero;
+        }
+
+        /// <summary>Constructs a fix64p3 vector from a bool3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p3(bool3 v)
+        {
+            this.x = v.x ? fix64p.One : fix64p.zero;
+            this.y = v.y ? fix64p.One : fix64p.zero;
+            this.z = v.z ? fix64p.One : fix64p.zero;
+        }
+
+        /// <summary>Constructs a fix64p3 vector from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p3(int v)
+        {
+            this.x = (fix64p)v;
+            this.y = (fix64p)v;
+            this.z = (fix64p)v;
+        }
+
+        /// <summary>Constructs a fix64p3 vector from a int3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p3(int3 v)
+        {
+            this.x = (fix64p)v.x;
+            this.y = (fix64p)v.y;
+            this.z = (fix64p)v.z;
+        }
+
+        /// <summary>Constructs a fix64p3 vector from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p3(float v)
+        {
+            this.x = (fix64p)v;
+            this.y = (fix64p)v;
+            this.z = (fix64p)v;
+        }
+
+        /// <summary>Constructs a fix64p3 vector from a float3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p3(float3 v)
+        {
+            this.x = (fix64p)v.x;
+            this.y = (fix64p)v.y;
+            this.z = (fix64p)v.z;
+        }
+
 
         /// <summary>Implicitly converts a single fix64p value to a fix64p3 vector by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator fix64p3(fix64p v) { return new fix64p3(v); }
+
+        /// <summary>Explicitly converts a single bool value to a fix64p3 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p3(bool v) { return new fix64p3(v); }
+
+        /// <summary>Explicitly converts a bool3 vector to a fix64p3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p3(bool3 v) { return new fix64p3(v); }
+
+        /// <summary>Explicitly converts a single int value to a fix64p3 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p3(int v) { return new fix64p3(v); }
+
+        /// <summary>Explicitly converts a int3 vector to a fix64p3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p3(int3 v) { return new fix64p3(v); }
+
+        /// <summary>Explicitly converts a single float value to a fix64p3 vector by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p3(float v) { return new fix64p3(v); }
+
+        /// <summary>Explicitly converts a float3 vector to a fix64p3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p3(float3 v) { return new fix64p3(v); }
 
 
         /// <summary>Returns the result of a componentwise multiplication operation on two fix64p3 vectors.</summary>
@@ -1286,6 +1364,30 @@ namespace Unity.Mathematics
         /// <summary>Returns a fix64p3 vector constructed from a single fix64p value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static fix64p3 fix64p3(fix64p v) { return new fix64p3(v); }
+
+        /// <summary>Returns a fix64p3 vector constructed from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 fix64p3(bool v) { return new fix64p3(v); }
+
+        /// <summary>Return a fix64p3 vector constructed from a bool3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 fix64p3(bool3 v) { return new fix64p3(v); }
+
+        /// <summary>Returns a fix64p3 vector constructed from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 fix64p3(int v) { return new fix64p3(v); }
+
+        /// <summary>Return a fix64p3 vector constructed from a int3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 fix64p3(int3 v) { return new fix64p3(v); }
+
+        /// <summary>Returns a fix64p3 vector constructed from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 fix64p3(float v) { return new fix64p3(v); }
+
+        /// <summary>Return a fix64p3 vector constructed from a float3 vector by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 fix64p3(float3 v) { return new fix64p3(v); }
 
         /// <summary>Returns a uint hash code of a fix64p3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

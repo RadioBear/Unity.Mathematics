@@ -50,10 +50,82 @@ namespace Unity.Mathematics
             this.c1 = v;
         }
 
+        /// <summary>Constructs a fix64p2x2 matrix from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2x2(bool v)
+        {
+            this.c0 = math.select(new fix64p2(fix64p.zero), new fix64p2(fix64p.One), v);
+            this.c1 = math.select(new fix64p2(fix64p.zero), new fix64p2(fix64p.One), v);
+        }
+
+        /// <summary>Constructs a fix64p2x2 matrix from a bool2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2x2(bool2x2 v)
+        {
+            this.c0 = math.select(new fix64p2(fix64p.zero), new fix64p2(fix64p.One), v.c0);
+            this.c1 = math.select(new fix64p2(fix64p.zero), new fix64p2(fix64p.One), v.c1);
+        }
+
+        /// <summary>Constructs a fix64p2x2 matrix from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2x2(int v)
+        {
+            this.c0 = (fix64p2)v;
+            this.c1 = (fix64p2)v;
+        }
+
+        /// <summary>Constructs a fix64p2x2 matrix from a int2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2x2(int2x2 v)
+        {
+            this.c0 = (fix64p2)v.c0;
+            this.c1 = (fix64p2)v.c1;
+        }
+
+        /// <summary>Constructs a fix64p2x2 matrix from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2x2(float v)
+        {
+            this.c0 = (fix64p2)v;
+            this.c1 = (fix64p2)v;
+        }
+
+        /// <summary>Constructs a fix64p2x2 matrix from a float2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public fix64p2x2(float2x2 v)
+        {
+            this.c0 = (fix64p2)v.c0;
+            this.c1 = (fix64p2)v.c1;
+        }
+
 
         /// <summary>Implicitly converts a single fix64p value to a fix64p2x2 matrix by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator fix64p2x2(fix64p v) { return new fix64p2x2(v); }
+
+        /// <summary>Explicitly converts a single bool value to a fix64p2x2 matrix by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2x2(bool v) { return new fix64p2x2(v); }
+
+        /// <summary>Explicitly converts a bool2x2 matrix to a fix64p2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2x2(bool2x2 v) { return new fix64p2x2(v); }
+
+        /// <summary>Explicitly converts a single int value to a fix64p2x2 matrix by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2x2(int v) { return new fix64p2x2(v); }
+
+        /// <summary>Explicitly converts a int2x2 matrix to a fix64p2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2x2(int2x2 v) { return new fix64p2x2(v); }
+
+        /// <summary>Explicitly converts a single float value to a fix64p2x2 matrix by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2x2(float v) { return new fix64p2x2(v); }
+
+        /// <summary>Explicitly converts a float2x2 matrix to a fix64p2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator fix64p2x2(float2x2 v) { return new fix64p2x2(v); }
 
 
         /// <summary>Returns the result of a componentwise multiplication operation on two fix64p2x2 matrices.</summary>
@@ -280,6 +352,30 @@ namespace Unity.Mathematics
         /// <summary>Returns a fix64p2x2 matrix constructed from a single fix64p value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static fix64p2x2 fix64p2x2(fix64p v) { return new fix64p2x2(v); }
+
+        /// <summary>Returns a fix64p2x2 matrix constructed from a single bool value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2x2 fix64p2x2(bool v) { return new fix64p2x2(v); }
+
+        /// <summary>Return a fix64p2x2 matrix constructed from a bool2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2x2 fix64p2x2(bool2x2 v) { return new fix64p2x2(v); }
+
+        /// <summary>Returns a fix64p2x2 matrix constructed from a single int value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2x2 fix64p2x2(int v) { return new fix64p2x2(v); }
+
+        /// <summary>Return a fix64p2x2 matrix constructed from a int2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2x2 fix64p2x2(int2x2 v) { return new fix64p2x2(v); }
+
+        /// <summary>Returns a fix64p2x2 matrix constructed from a single float value by converting it to fix64p and assigning it to every component.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2x2 fix64p2x2(float v) { return new fix64p2x2(v); }
+
+        /// <summary>Return a fix64p2x2 matrix constructed from a float2x2 matrix by componentwise conversion.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2x2 fix64p2x2(float2x2 v) { return new fix64p2x2(v); }
 
         /// <summary>Return the fix64p2x2 transpose of a fix64p2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

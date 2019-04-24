@@ -442,6 +442,23 @@ namespace Unity.Mathematics
         public static double4 min(double4 x, double4 y) { return new double4(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w)); }
 
 
+        /// <summary>Returns the minimum of two fix64p values.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p min(fix64p x, fix64p y) { return  x < y ? x : y; }
+
+        /// <summary>Returns the componentwise minimum of two fix64p2 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 min(fix64p2 x, fix64p2 y) { return new fix64p2(min(x.x, y.x), min(x.y, y.y)); }
+
+        /// <summary>Returns the componentwise minimum of two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 min(fix64p3 x, fix64p3 y) { return new fix64p3(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z)); }
+
+        /// <summary>Returns the componentwise minimum of two fix64p4 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 min(fix64p4 x, fix64p4 y) { return new fix64p4(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w)); }
+
+
         /// <summary>Returns the maximum of two int values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int max(int x, int y) { return x > y ? x : y; }
@@ -520,6 +537,23 @@ namespace Unity.Mathematics
         public static double4 max(double4 x, double4 y) { return new double4(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w)); }
 
 
+        /// <summary>Returns the maximum of two fix64p values.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p max(fix64p x, fix64p y) { return x > y ? x : y; }
+
+        /// <summary>Returns the componentwise maximum of two fix64p2 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 max(fix64p2 x, fix64p2 y) { return new fix64p2(max(x.x, y.x), max(x.y, y.y)); }
+
+        /// <summary>Returns the componentwise maximum of two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 max(fix64p3 x, fix64p3 y) { return new fix64p3(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z)); }
+
+        /// <summary>Returns the componentwise maximum of two fix64p4 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 max(fix64p4 x, fix64p4 y) { return new fix64p4(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w)); }
+
+
         /// <summary>Returns the result of linearly interpolating from x to y using the interpolation parameter s.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float lerp(float x, float y, float s) { return x + s * (y - x); }
@@ -580,6 +614,36 @@ namespace Unity.Mathematics
         public static double4 lerp(double4 x, double4 y, double4 s) { return x + s * (y - x); }
 
 
+        /// <summary>Returns the result of linearly interpolating from x to y using the interpolation parameter s.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p lerp(fix64p x, fix64p y, fix64p s) { return x + s * (y - x); }
+
+        /// <summary>Returns the result of a componentwise linear interpolating from x to y using the interpolation parameter s.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 lerp(fix64p2 x, fix64p2 y, fix64p s) { return x + s * (y - x); }
+
+        /// <summary>Returns the result of a componentwise linear interpolating from x to y using the interpolation parameter s.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 lerp(fix64p3 x, fix64p3 y, fix64p s) { return x + s * (y - x); }
+
+        /// <summary>Returns the result of a componentwise linear interpolating from x to y using the interpolation parameter s.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 lerp(fix64p4 x, fix64p4 y, fix64p s) { return x + s * (y - x); }
+
+
+        /// <summary>Returns the result of a componentwise linear interpolating from x to y using the corresponding components of the interpolation parameter s.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 lerp(fix64p2 x, fix64p2 y, fix64p2 s) { return x + s * (y - x); }
+
+        /// <summary>Returns the result of a componentwise linear interpolating from x to y using the corresponding components of the interpolation parameter s.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 lerp(fix64p3 x, fix64p3 y, fix64p3 s) { return x + s * (y - x); }
+
+        /// <summary>Returns the result of a componentwise linear interpolating from x to y using the corresponding components of the interpolation parameter s.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 lerp(fix64p4 x, fix64p4 y, fix64p4 s) { return x + s * (y - x); }
+
+
         /// <summary>Returns the result of normalizing a floating point value x to a range [a, b]. The opposite of lerp. Equivalent to (x - a) / (b - a).</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float unlerp(float a, float b, float x) { return (x - a) / (b - a); }
@@ -614,6 +678,23 @@ namespace Unity.Mathematics
         public static double4 unlerp(double4 a, double4 b, double4 x) { return (x - a) / (b - a); }
 
 
+        /// <summary>Returns the result of normalizing a fixed point value x to a range [a, b]. The opposite of lerp. Equivalent to (x - a) / (b - a).</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p unlerp(fix64p a, fix64p b, fix64p x) { return (x - a) / (b - a); }
+
+        /// <summary>Returns the componentwise result of normalizing a fixed point value x to a range [a, b]. The opposite of lerp. Equivalent to (x - a) / (b - a).</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 unlerp(fix64p2 a, fix64p2 b, fix64p2 x) { return (x - a) / (b - a); }
+
+        /// <summary>Returns the componentwise result of normalizing a fixed point value x to a range [a, b]. The opposite of lerp. Equivalent to (x - a) / (b - a).</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 unlerp(fix64p3 a, fix64p3 b, fix64p3 x) { return (x - a) / (b - a); }
+
+        /// <summary>Returns the componentwise result of normalizing a fixed point value x to a range [a, b]. The opposite of lerp. Equivalent to (x - a) / (b - a).</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 unlerp(fix64p4 a, fix64p4 b, fix64p4 x) { return (x - a) / (b - a); }
+
+
         /// <summary>Returns the result of a non-clamping linear remapping of a value x from [a, b] to [c, d].</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float remap(float a, float b, float c, float d, float x) { return lerp(c, d, unlerp(a, b, x)); }
@@ -646,6 +727,23 @@ namespace Unity.Mathematics
         /// <summary>Returns the componentwise result of a non-clamping linear remapping of a value x from [a, b] to [c, d].</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double4 remap(double4 a, double4 b, double4 c, double4 d, double4 x) { return lerp(c, d, unlerp(a, b, x)); }
+
+
+        /// <summary>Returns the result of a non-clamping linear remapping of a value x from [a, b] to [c, d].</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p remap(fix64p a, fix64p b, fix64p c, fix64p d, fix64p x) { return lerp(c, d, unlerp(a, b, x)); }
+
+        /// <summary>Returns the componentwise result of a non-clamping linear remapping of a value x from [a, b] to [c, d].</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 remap(fix64p2 a, fix64p2 b, fix64p2 c, fix64p2 d, fix64p2 x) { return lerp(c, d, unlerp(a, b, x)); }
+
+        /// <summary>Returns the componentwise result of a non-clamping linear remapping of a value x from [a, b] to [c, d].</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 remap(fix64p3 a, fix64p3 b, fix64p3 c, fix64p3 d, fix64p3 x) { return lerp(c, d, unlerp(a, b, x)); }
+
+        /// <summary>Returns the componentwise result of a non-clamping linear remapping of a value x from [a, b] to [c, d].</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 remap(fix64p4 a, fix64p4 b, fix64p4 c, fix64p4 d, fix64p4 x) { return lerp(c, d, unlerp(a, b, x)); }
 
 
         /// <summary>Returns the result of a multiply-add operation (a * b + c) on 3 int values.</summary>
@@ -726,6 +824,23 @@ namespace Unity.Mathematics
         public static double4 mad(double4 a, double4 b, double4 c) { return a * b + c; }
 
 
+        /// <summary>Returns the result of a multiply-add operation (a * b + c) on 3 fix64p values.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p mad(fix64p a, fix64p b, fix64p c) { return a * b + c; }
+
+        /// <summary>Returns the result of a componentwise multiply-add operation (a * b + c) on 3 fix64p2 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 mad(fix64p2 a, fix64p2 b, fix64p2 c) { return a * b + c; }
+
+        /// <summary>Returns the result of a componentwise multiply-add operation (a * b + c) on 3 fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 mad(fix64p3 a, fix64p3 b, fix64p3 c) { return a * b + c; }
+
+        /// <summary>Returns the result of a componentwise multiply-add operation (a * b + c) on 3 fix64p4 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 mad(fix64p4 a, fix64p4 b, fix64p4 c) { return a * b + c; }
+
+
         /// <summary>Returns the result of clamping the value x into the interval [a, b], where x, a and b are int values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int clamp(int x, int a, int b) { return max(a, min(b, x)); }
@@ -803,6 +918,23 @@ namespace Unity.Mathematics
         public static double4 clamp(double4 x, double4 a, double4 b) { return max(a, min(b, x)); }
 
 
+        /// <summary>Returns the result of clamping the value x into the interval [a, b], where x, a and b are fix64p values.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p clamp(fix64p x, fix64p a, fix64p b) { return max(a, min(b, x)); }
+
+        /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are fix64p2 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 clamp(fix64p2 x, fix64p2 a, fix64p2 b) { return max(a, min(b, x)); }
+
+        /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 clamp(fix64p3 x, fix64p3 a, fix64p3 b) { return max(a, min(b, x)); }
+
+        /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are fix64p4 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 clamp(fix64p4 x, fix64p4 a, fix64p4 b) { return max(a, min(b, x)); }
+
+
         /// <summary>Returns the result of clamping the float value x into the interval [0, 1].</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float saturate(float x) { return clamp(x, 0.0f, 1.0f); }
@@ -835,6 +967,23 @@ namespace Unity.Mathematics
         /// <summary>Returns the result of a componentwise clamping of the double4 vector x into the interval [0, 1].</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double4 saturate(double4 x) { return clamp(x, new double4(0.0), new double4(1.0)); }
+
+
+        /// <summary>Returns the result of clamping the fix64p value x into the interval [0, 1].</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p saturate(fix64p x) { return clamp(x, fix64p.Zero, fix64p.One); }
+
+        /// <summary>Returns the result of a componentwise clamping of the fix64p2 vector x into the interval [0, 1].</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 saturate(fix64p2 x) { return clamp(x, new fix64p2(fix64p.Zero), new fix64p2(fix64p.One)); }
+
+        /// <summary>Returns the result of a componentwise clamping of the fix64p3 vector x into the interval [0, 1].</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 saturate(fix64p3 x) { return clamp(x, new fix64p3(fix64p.Zero), new fix64p3(fix64p.One)); }
+
+        /// <summary>Returns the result of a componentwise clamping of the fix64p4 vector x into the interval [0, 1].</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 saturate(fix64p4 x) { return clamp(x, new fix64p4(fix64p.Zero), new fix64p4(fix64p.One)); }
 
 
         /// <summary>Returns the absolute value of a int value.</summary>
@@ -890,6 +1039,23 @@ namespace Unity.Mathematics
         /// <summary>Returns the componentwise absolute value of a double4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double4 abs(double4 x) { return double4(asdouble(asulong(x.x) & 0x7FFFFFFFFFFFFFFF), asdouble(asulong(x.y) & 0x7FFFFFFFFFFFFFFF), asdouble(asulong(x.z) & 0x7FFFFFFFFFFFFFFF), asdouble(asulong(x.w) & 0x7FFFFFFFFFFFFFFF)); }
+
+
+        /// <summary>Returns the absolute value of a fix64p value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p abs(fix64p x) { return fix64p.Abs(x); }
+
+        /// <summary>Returns the componentwise absolute value of a fix64p2 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 abs(fix64p2 x) { return new fix64p2(fix64p.Abs(x.x), fix64p.Abs(x.y)); }
+
+        /// <summary>Returns the componentwise absolute value of a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 abs(fix64p3 x) { return new fix64p3(fix64p.Abs(x.x), fix64p.Abs(x.y), fix64p.Abs(x.z)); }
+
+        /// <summary>Returns the componentwise absolute value of a fix64p4 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 abs(fix64p4 x) { return new fix64p4(fix64p.Abs(x.x), fix64p.Abs(x.y), fix64p.Abs(x.z), fix64p.Abs(x.w)); }
 
 
         /// <summary>Returns the dot product of two int values. Equivalent to multiplication.</summary>
@@ -960,6 +1126,23 @@ namespace Unity.Mathematics
         public static double dot(double4 x, double4 y) { return x.x * y.x + x.y * y.y + x.z * y.z + x.w * y.w; }
 
 
+        /// <summary>Returns the dot product of two fix64p values. Equivalent to multiplication.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p dot(fix64p x, fix64p y) { return x * y; }
+
+        /// <summary>Returns the dot product of two fix64p2 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p dot(fix64p2 x, fix64p2 y) { return x.x * y.x + x.y * y.y; }
+
+        /// <summary>Returns the dot product of two fix64p3 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p dot(fix64p3 x, fix64p3 y) { return x.x * y.x + x.y * y.y + x.z * y.z; }
+
+        /// <summary>Returns the dot product of two fix64p4 vectors.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p dot(fix64p4 x, fix64p4 y) { return x.x * y.x + x.y * y.y + x.z * y.z + x.w * y.w; }
+
+
         /// <summary>Returns the tangent of a float value.</summary>
         public static float tan(float x) { return (float)System.Math.Tan(x); }
 
@@ -984,6 +1167,19 @@ namespace Unity.Mathematics
 
         /// <summary>Returns the componentwise tangent of a double4 vector.</summary>
         public static double4 tan(double4 x) { return new double4(tan(x.x), tan(x.y), tan(x.z), tan(x.w)); }
+
+
+        /// <summary>Returns the tangent of a fix64p value.</summary>
+        public static fix64p tan(fix64p x) { return fix64p.Tan(x); }
+
+        /// <summary>Returns the componentwise tangent of a fix64p2 vector.</summary>
+        public static fix64p2 tan(fix64p2 x) { return new fix64p2(tan(x.x), tan(x.y)); }
+
+        /// <summary>Returns the componentwise tangent of a fix64p3 vector.</summary>
+        public static fix64p3 tan(fix64p3 x) { return new fix64p3(tan(x.x), tan(x.y), tan(x.z)); }
+
+        /// <summary>Returns the componentwise tangent of a fix64p4 vector.</summary>
+        public static fix64p4 tan(fix64p4 x) { return new fix64p4(tan(x.x), tan(x.y), tan(x.z), tan(x.w)); }
 
 
         /// <summary>Returns the hyperbolic tangent of a float value.</summary>
@@ -1090,6 +1286,19 @@ namespace Unity.Mathematics
         public static double4 cos(double4 x) { return new double4(cos(x.x), cos(x.y), cos(x.z), cos(x.w)); }
 
 
+        /// <summary>Returns the cosine of a fix64p value.</summary>
+        public static fix64p cos(fix64p x) { return fix64p.Cos(x); }
+
+        /// <summary>Returns the componentwise cosine of a fix64p2 vector.</summary>
+        public static fix64p2 cos(fix64p2 x) { return new fix64p2(cos(x.x), cos(x.y)); }
+
+        /// <summary>Returns the componentwise cosine of a fix64p3 vector.</summary>
+        public static fix64p3 cos(fix64p3 x) { return new fix64p3(cos(x.x), cos(x.y), cos(x.z)); }
+
+        /// <summary>Returns the componentwise cosine of a fix64p4 vector.</summary>
+        public static fix64p4 cos(fix64p4 x) { return new fix64p4(cos(x.x), cos(x.y), cos(x.z), cos(x.w)); }
+
+
         /// <summary>Returns the hyperbolic cosine of a float value.</summary>
         public static float cosh(float x) { return (float)System.Math.Cosh(x); }
 
@@ -1166,6 +1375,19 @@ namespace Unity.Mathematics
 
         /// <summary>Returns the componentwise sine of a double4 vector.</summary>
         public static double4 sin(double4 x) { return new double4(sin(x.x), sin(x.y), sin(x.z), sin(x.w)); }
+
+
+        /// <summary>Returns the sine of a fix64p value.</summary>
+        public static fix64p sin(fix64p x) { return fix64p.Sin(x); }
+
+        /// <summary>Returns the componentwise sine of a fix64p2 vector.</summary>
+        public static fix64p2 sin(fix64p2 x) { return new fix64p2(sin(x.x), sin(x.y)); }
+
+        /// <summary>Returns the componentwise sine of a fix64p3 vector.</summary>
+        public static fix64p3 sin(fix64p3 x) { return new fix64p3(sin(x.x), sin(x.y), sin(x.z)); }
+
+        /// <summary>Returns the componentwise sine of a fix64p4 vector.</summary>
+        public static fix64p4 sin(fix64p4 x) { return new fix64p4(sin(x.x), sin(x.y), sin(x.z), sin(x.w)); }
 
 
         /// <summary>Returns the hyperbolic sine of a float value.</summary>
@@ -1246,6 +1468,19 @@ namespace Unity.Mathematics
         public static double4 floor(double4 x) { return new double4(floor(x.x), floor(x.y), floor(x.z), floor(x.w)); }
 
 
+        /// <summary>Returns the result of rounding a fix64p value up to the nearest integral value less or equal to the original value.</summary>
+        public static fix64p floor(fix64p x) { return fix64p.Floor(x); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p2 vector value down to the nearest value less or equal to the original value.</summary>
+        public static fix64p2 floor(fix64p2 x) { return new fix64p2(floor(x.x), floor(x.y)); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p3 vector value down to the nearest value less or equal to the original value.</summary>
+        public static fix64p3 floor(fix64p3 x) { return new fix64p3(floor(x.x), floor(x.y), floor(x.z)); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p4 vector value down to the nearest value less or equal to the original value.</summary>
+        public static fix64p4 floor(fix64p4 x) { return new fix64p4(floor(x.x), floor(x.y), floor(x.z), floor(x.w)); }
+
+
         /// <summary>Returns the result of rounding a float value up to the nearest integral value greater or equal to the original value.</summary>
         public static float ceil(float x) { return (float)System.Math.Ceiling((float)x); }
 
@@ -1272,6 +1507,19 @@ namespace Unity.Mathematics
         public static double4 ceil(double4 x) { return new double4(ceil(x.x), ceil(x.y), ceil(x.z), ceil(x.w)); }
 
 
+        /// <summary>Returns the result of rounding a fix64p value up to the nearest greater integral value greater or equal to the original value.</summary>
+        public static fix64p ceil(fix64p x) { return fix64p.Ceiling(x); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p2 vector value up to the nearest integral value greater or equal to the original value.</summary>
+        public static fix64p2 ceil(fix64p2 x) { return new fix64p2(ceil(x.x), ceil(x.y)); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p3 vector value up to the nearest integral value greater or equal to the original value..</summary>
+        public static fix64p3 ceil(fix64p3 x) { return new fix64p3(ceil(x.x), ceil(x.y), ceil(x.z)); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p4 vector value up to the nearest integral value greater or equal to the original value.</summary>
+        public static fix64p4 ceil(fix64p4 x) { return new fix64p4(ceil(x.x), ceil(x.y), ceil(x.z), ceil(x.w)); }
+
+
         /// <summary>Returns the result of rounding a float value to the nearest integral value.</summary>
         public static float round(float x) { return (float)System.Math.Round((float)x); }
 
@@ -1296,6 +1544,19 @@ namespace Unity.Mathematics
 
         /// <summary>Returns the result of rounding each component of a double4 vector value to the nearest integral value.</summary>
         public static double4 round(double4 x) { return new double4(round(x.x), round(x.y), round(x.z), round(x.w)); }
+
+
+        /// <summary>Returns the result of rounding a fix64p value to the nearest integral value.</summary>
+        public static fix64p round(fix64p x) { return fix64p.Round(x); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p2 vector value to the nearest integral value.</summary>
+        public static fix64p2 round(fix64p2 x) { return new fix64p2(round(x.x), round(x.y)); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p3 vector value to the nearest integral value.</summary>
+        public static fix64p3 round(fix64p3 x) { return new fix64p3(round(x.x), round(x.y), round(x.z)); }
+
+        /// <summary>Returns the result of rounding each component of a fix64p4 vector value to the nearest integral value.</summary>
+        public static fix64p4 round(fix64p4 x) { return new fix64p4(round(x.x), round(x.y), round(x.z), round(x.w)); }
 
 
         /// <summary>Returns the result of truncating a float value to an integral float value.</summary>
@@ -1350,6 +1611,19 @@ namespace Unity.Mathematics
         public static double4 frac(double4 x) { return x - floor(x); }
 
 
+        /// <summary>Returns the fractional part of a double value.</summary>
+        public static fix64p frac(fix64p x) { return x - floor(x); }
+
+        /// <summary>Returns the componentwise fractional parts of a double2 vector.</summary>
+        public static fix64p2 frac(fix64p2 x) { return x - floor(x); }
+
+        /// <summary>Returns the componentwise fractional parts of a double3 vector.</summary>
+        public static fix64p3 frac(fix64p3 x) { return x - floor(x); }
+
+        /// <summary>Returns the componentwise fractional parts of a double4 vector.</summary>
+        public static fix64p4 frac(fix64p4 x) { return x - floor(x); }
+
+
         /// <summary>Returns the reciprocal a float value.</summary>
         public static float rcp(float x) { return 1.0f / x; }
 
@@ -1402,6 +1676,19 @@ namespace Unity.Mathematics
         public static double4 sign(double4 x) { return new double4(sign(x.x), sign(x.y), sign(x.z), sign(x.w)); }
 
 
+        /// <summary>Returns the sign of a fix64p value. -1.0 if it is less than zero, 0.0 if it is zero and 1.0 if it greater than zero.</summary>
+        public static fix64p sign(fix64p x) { return  x.value < 0 ? -fix64p.One : x.value > 0 ? fix64p.One : fix64p.Zero; }
+
+        /// <summary>Returns the componentwise sign of a fix64p2 value. 1.0 for positive components, 0.0 for zero components and -1.0 for negative components.</summary>
+        public static fix64p2 sign(fix64p2 x) { return new fix64p2(sign(x.x), sign(x.y)); }
+
+        /// <summary>Returns the componentwise sign of a fix64p3 value. 1.0 for positive components, 0.0 for zero components and -1.0 for negative components.</summary>
+        public static fix64p3 sign(fix64p3 x) { return new fix64p3(sign(x.x), sign(x.y), sign(x.z)); }
+
+        /// <summary>Returns the componentwise sign of a fix64p4 value. 1.0 for positive components, 0.0 for zero components and -1.0 for negative components.</summary>
+        public static fix64p4 sign(fix64p4 x) { return new fix64p4(sign(x.x), sign(x.y), sign(x.z), sign(x.w)); }
+
+
         /// <summary>Returns x raised to the power y.</summary>
         public static float pow(float x, float y) { return (float)System.Math.Pow((float)x, (float)y); }
 
@@ -1426,6 +1713,19 @@ namespace Unity.Mathematics
 
         /// <summary>Returns the componentwise result of raising x to the power y.</summary>
         public static double4 pow(double4 x, double4 y) { return new double4(pow(x.x, y.x), pow(x.y, y.y), pow(x.z, y.z), pow(x.w, y.w)); }
+
+
+        /// <summary>Returns x raised to the power y.</summary>
+        public static fix64p pow(fix64p x, fix64p y) { return fix64p.Pow(x, y); }
+
+        /// <summary>Returns the componentwise result of raising x to the power y.</summary>
+        public static fix64p2 pow(fix64p2 x, fix64p2 y) { return new fix64p2(pow(x.x, y.x), pow(x.y, y.y)); }
+
+        /// <summary>Returns the componentwise result of raising x to the power y.</summary>
+        public static fix64p3 pow(fix64p3 x, fix64p3 y) { return new fix64p3(pow(x.x, y.x), pow(x.y, y.y), pow(x.z, y.z)); }
+
+        /// <summary>Returns the componentwise result of raising x to the power y.</summary>
+        public static fix64p4 pow(fix64p4 x, fix64p4 y) { return new fix64p4(pow(x.x, y.x), pow(x.y, y.y), pow(x.z, y.z), pow(x.w, y.w)); }
 
 
         /// <summary>Returns the base-e exponential of x.</summary>
@@ -1558,6 +1858,19 @@ namespace Unity.Mathematics
         public static double4 log2(double4 x) { return new double4(log2(x.x), log2(x.y), log2(x.z), log2(x.w)); }
 
 
+        /// <summary>Returns the base-2 logarithm of a fix64p value.</summary>
+        public static fix64p log2(fix64p x) { return fix64p.Log2(x); }
+
+        /// <summary>Returns the componentwise base-2 logarithm of a fix64p2 vector.</summary>
+        public static fix64p2 log2(fix64p2 x) { return new fix64p2(log2(x.x), log2(x.y)); }
+
+        /// <summary>Returns the componentwise base-2 logarithm of a fix64p3 vector.</summary>
+        public static fix64p3 log2(fix64p3 x) { return new fix64p3(log2(x.x), log2(x.y), log2(x.z)); }
+
+        /// <summary>Returns the componentwise base-2 logarithm of a fix64p4 vector.</summary>
+        public static fix64p4 log2(fix64p4 x) { return new fix64p4(log2(x.x), log2(x.y), log2(x.z), log2(x.w)); }
+
+
         /// <summary>Returns the base-10 logarithm of a float value.</summary>
         public static float log10(float x) { return (float)System.Math.Log10((float)x); }
 
@@ -1608,6 +1921,19 @@ namespace Unity.Mathematics
 
         /// <summary>Returns the componentwise double precision floating point remainder of x/y.</summary>
         public static double4 fmod(double4 x, double4 y) { return new double4(x.x % y.x, x.y % y.y, x.z % y.z, x.w % y.w); }
+
+
+        /// <summary>Returns the fix64p precision fixed point remainder of x/y.</summary>
+        public static fix64p fmod(fix64p x, fix64p y) { return x % y; }
+
+        /// <summary>Returns the componentwise fix64p precision fixed point remainder of x/y.</summary>
+        public static fix64p2 fmod(fix64p2 x, fix64p2 y) { return new fix64p2(x.x % y.x, x.y % y.y); }
+
+        /// <summary>Returns the componentwise fix64p precision fixed point remainder of x/y.</summary>
+        public static fix64p3 fmod(fix64p3 x, fix64p3 y) { return new fix64p3(x.x % y.x, x.y % y.y, x.z % y.z); }
+
+        /// <summary>Returns the componentwise fix64p precision fixed point remainder of x/y.</summary>
+        public static fix64p4 fmod(fix64p4 x, fix64p4 y) { return new fix64p4(x.x % y.x, x.y % y.y, x.z % y.z, x.w % y.w); }
 
 
         /// <summary>Splits a float value into an integral part i and a fractional part that gets returned. Both parts take the sign of the input.</summary>
@@ -1680,6 +2006,19 @@ namespace Unity.Mathematics
         public static double4 sqrt(double4 x) { return new double4(sqrt(x.x), sqrt(x.y), sqrt(x.z), sqrt(x.w)); }
 
 
+        /// <summary>Returns the square root of a fix64p value.</summary>
+        public static fix64p sqrt(fix64p x) { return fix64p.Sqrt(x); }
+
+        /// <summary>Returns the componentwise square root of a fix64p2 vector.</summary>
+        public static fix64p2 sqrt(fix64p2 x) { return new fix64p2(sqrt(x.x), sqrt(x.y)); }
+
+        /// <summary>Returns the componentwise square root of a fix64p3 vector.</summary>
+        public static fix64p3 sqrt(fix64p3 x) { return new fix64p3(sqrt(x.x), sqrt(x.y), sqrt(x.z)); }
+
+        /// <summary>Returns the componentwise square root of a fix64p4 vector.</summary>
+        public static fix64p4 sqrt(fix64p4 x) { return new fix64p4(sqrt(x.x), sqrt(x.y), sqrt(x.z), sqrt(x.w)); }
+
+
         /// <summary>Returns the reciprocal square root of a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float rsqrt(float x) { return 1.0f / sqrt(x); }
@@ -1714,6 +2053,23 @@ namespace Unity.Mathematics
         public static double4 rsqrt(double4 x) { return 1.0 / sqrt(x); }
 
 
+        /// <summary>Returns the reciprocal square root of a fix64p value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p rsqrt(fix64p x) { return fix64p.One / sqrt(x); }
+
+        /// <summary>Returns the componentwise reciprocal square root of a fix64p2 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 rsqrt(fix64p2 x) { return fix64p.One / sqrt(x); }
+
+        /// <summary>Returns the componentwise reciprocal square root of a fix64p3 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 rsqrt(fix64p3 x) { return fix64p.One / sqrt(x); }
+
+        /// <summary>Returns the componentwise reciprocal square root of a fix64p4 vector.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 rsqrt(fix64p4 x) { return fix64p.One / sqrt(x); }
+
+
         /// <summary>Returns a normalized version of the float2 vector x by scaling it by 1 / length(x).</summary>
         public static float2 normalize(float2 x) { return rsqrt(dot(x, x)) * x; }
 
@@ -1732,6 +2088,16 @@ namespace Unity.Mathematics
 
         /// <summary>Returns a normalized version of the double4 vector x by scaling it by 1 / length(x).</summary>
         public static double4 normalize(double4 x) { return rsqrt(dot(x, x)) * x; }
+
+
+        /// <summary>Returns a normalized version of the fix64p2 vector x by scaling it by 1 / length(x).</summary>
+        public static fix64p2 normalize(fix64p2 x) { return rsqrt(dot(x, x)) * x; }
+
+        /// <summary>Returns a normalized version of the fix64p3 vector x by scaling it by 1 / length(x).</summary>
+        public static fix64p3 normalize(fix64p3 x) { return rsqrt(dot(x, x)) * x; }
+
+        /// <summary>Returns a normalized version of the fix64p4 vector x by scaling it by 1 / length(x).</summary>
+        public static fix64p4 normalize(fix64p4 x) { return rsqrt(dot(x, x)) * x; }
 
 
         /// <summary>
@@ -1822,6 +2188,19 @@ namespace Unity.Mathematics
         public static double length(double4 x) { return sqrt(dot(x, x)); }
 
 
+        /// <summary>Returns the length of a fix64p value. Equivalent to the absolute value.</summary>
+        public static fix64p length(fix64p x) { return abs(x); }
+
+        /// <summary>Returns the length of a fix64p2 vector.</summary>
+        public static fix64p length(fix64p2 x) { return sqrt(dot(x, x)); }
+
+        /// <summary>Returns the length of a fix64p3 vector.</summary>
+        public static fix64p length(fix64p3 x) { return sqrt(dot(x, x)); }
+
+        /// <summary>Returns the length of a fix64p4 vector.</summary>
+        public static fix64p length(fix64p4 x) { return sqrt(dot(x, x)); }
+
+
         /// <summary>Returns the squared length of a float value. Equivalent to squaring the value.</summary>
         public static float lengthsq(float x) { return x*x; }
 
@@ -1846,6 +2225,19 @@ namespace Unity.Mathematics
 
         /// <summary>Returns the squared length of a double4 vector.</summary>
         public static double lengthsq(double4 x) { return dot(x, x); }
+
+
+        /// <summary>Returns the squared length of a fix64p value. Equivalent to squaring the value.</summary>
+        public static fix64p lengthsq(fix64p x) { return x * x; }
+
+        /// <summary>Returns the squared length of a fix64p2 vector.</summary>
+        public static fix64p lengthsq(fix64p2 x) { return dot(x, x); }
+
+        /// <summary>Returns the squared length of a fix64p3 vector.</summary>
+        public static fix64p lengthsq(fix64p3 x) { return dot(x, x); }
+
+        /// <summary>Returns the squared length of a fix64p4 vector.</summary>
+        public static fix64p lengthsq(fix64p4 x) { return dot(x, x); }
 
 
         /// <summary>Returns the distance between two float values.</summary>
@@ -1874,6 +2266,19 @@ namespace Unity.Mathematics
         public static double distance(double4 x, double4 y) { return length(y - x); }
 
 
+        /// <summary>Returns the distance between two fix64p values.</summary>
+        public static fix64p distance(fix64p x, fix64p y) { return abs(y - x); }
+
+        /// <summary>Returns the distance between two fix64p2 vectors.</summary>
+        public static fix64p distance(fix64p2 x, fix64p2 y) { return length(y - x); }
+
+        /// <summary>Returns the distance between two fix64p3 vectors.</summary>
+        public static fix64p distance(fix64p3 x, fix64p3 y) { return length(y - x); }
+
+        /// <summary>Returns the distance between two fix64p4 vectors.</summary>
+        public static fix64p distance(fix64p4 x, fix64p4 y) { return length(y - x); }
+
+
         /// <summary>Returns the distance between two float values.</summary>
         public static float distancesq(float x, float y) { return (y - x) * (y - x); }
 
@@ -1900,11 +2305,27 @@ namespace Unity.Mathematics
         public static double distancesq(double4 x, double4 y) { return lengthsq(y - x); }
 
 
+        /// <summary>Returns the distance between two fix64p values.</summary>
+        public static fix64p distancesq(fix64p x, fix64p y) { return (y - x) * (y - x); }
+
+        /// <summary>Returns the distance between two fix64p2 vectors.</summary>
+        public static fix64p distancesq(fix64p2 x, fix64p2 y) { return lengthsq(y - x); }
+
+        /// <summary>Returns the distance between two fix64p3 vectors.</summary>
+        public static fix64p distancesq(fix64p3 x, fix64p3 y) { return lengthsq(y - x); }
+
+        /// <summary>Returns the distance between two fix64p4 vectors.</summary>
+        public static fix64p distancesq(fix64p4 x, fix64p4 y) { return lengthsq(y - x); }
+
+
         /// <summary>Returns the cross product of two float3 vectors.</summary>
         public static float3 cross(float3 x, float3 y) { return (x * y.yzx - x.yzx * y).yzx; }
 
         /// <summary>Returns the cross product of two double3 vectors.</summary>
         public static double3 cross(double3 x, double3 y) { return (x * y.yzx - x.yzx * y).yzx; }
+
+        /// <summary>Returns the cross product of two fix64p3 vectors.</summary>
+        public static fix64p3 cross(fix64p3 x, fix64p3 y) { return (x * y.yzx - x.yzx * y).yzx; }
 
 
         /// <summary>Returns a smooth Hermite interpolation between 0.0f and 1.0f when x is in [a, b].</summary>
@@ -1964,7 +2385,36 @@ namespace Unity.Mathematics
             return t * t * (3.0 - (2.0 * t));
         }
 
- 
+
+        /// <summary>Returns a smooth Hermite interpolation between 0.0 and 1.0 when x is in [a, b].</summary>
+        public static fix64p smoothstep(fix64p a, fix64p b, fix64p x)
+        {
+            var t = saturate((x - a) / (b - a));
+            return t * t * (new fix64p(3.0f) - (new fix64p(2.0f) * t));
+        }
+
+        /// <summary>Returns a componentwise smooth Hermite interpolation between 0.0 and 1.0 when x is in [a, b].</summary>
+        public static fix64p2 smoothstep(fix64p2 a, fix64p2 b, fix64p2 x)
+        {
+            var t = saturate((x - a) / (b - a));
+            return t * t * (fix64p2(3.0f) - (fix64p2(2.0f) * t));
+        }
+
+        /// <summary>Returns a componentwise smooth Hermite interpolation between 0.0 and 1.0 when x is in [a, b].</summary>
+        public static fix64p3 smoothstep(fix64p3 a, fix64p3 b, fix64p3 x)
+        {
+            var t = saturate((x - a) / (b - a));
+            return t * t * (fix64p3(3.0f) - (fix64p3(2.0f) * t));
+        }
+
+        /// <summary>Returns a componentwise smooth Hermite interpolation between 0.0 and 1.0 when x is in [a, b].</summary>
+        public static fix64p4 smoothstep(fix64p4 a, fix64p4 b, fix64p4 x)
+        {
+            var t = saturate((x - a) / (b - a));
+            return t * t * (fix64p4(3.0f) - (fix64p4(2.0f) * t));
+        }
+
+
         /// <summary>Returns true if any component of the input bool2 vector is true, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool any(bool2 x) { return x.x || x.y; }
@@ -2030,6 +2480,19 @@ namespace Unity.Mathematics
         public static bool any(double4 x) { return x.x != 0.0 || x.y != 0.0 || x.z != 0.0 || x.w != 0.0; }
 
 
+        /// <summary>Returns true if any component of the input fix64p2 vector is non-zero, false otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool any(fix64p2 x) { return x.x != fix64p.zero || x.y != fix64p.zero; }
+
+        /// <summary>Returns true if any component of the input fix64p3 vector is non-zero, false otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool any(fix64p3 x) { return x.x != fix64p.zero || x.y != fix64p.zero || x.z != fix64p.zero; }
+
+        /// <summary>Returns true if any component of the input fix64p4 vector is non-zero, false otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool any(fix64p4 x) { return x.x != fix64p.zero || x.y != fix64p.zero || x.z != fix64p.zero || x.w != fix64p.zero; }
+
+
         /// <summary>Returns true if all components of the input bool2 vector are true, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool all(bool2 x) { return x.x && x.y; }
@@ -2093,6 +2556,19 @@ namespace Unity.Mathematics
         /// <summary>Returns true if all components of the input double4 vector are non-zero, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool all(double4 x) { return x.x != 0.0 && x.y != 0.0 && x.z != 0.0 && x.w != 0.0; }
+
+
+        /// <summary>Returns true if all components of the input fix64p2 vector are non-zero, false otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool all(fix64p2 x) { return x.x != fix64p.zero && x.y != fix64p.zero; }
+
+        /// <summary>Returns true if all components of the input fix64p3 vector are non-zero, false otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool all(fix64p3 x) { return x.x != fix64p.zero && x.y != fix64p.zero && x.z != fix64p.zero; }
+
+        /// <summary>Returns true if all components of the input fix64p4 vector are non-zero, false otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool all(fix64p4 x) { return x.x != fix64p.zero && x.y != fix64p.zero && x.z != fix64p.zero && x.w != fix64p.zero; }
 
 
         /// <summary>Returns b if c is true, a otherwise.</summary>
@@ -2259,6 +2735,44 @@ namespace Unity.Mathematics
         public static double4 select(double4 a, double4 b, bool4 c) { return new double4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w); }
 
 
+        /// <summary>Returns b if c is true, a otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p select(fix64p a, fix64p b, bool c) { return c ? b : a; }
+
+        /// <summary>Returns b if c is true, a otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 select(fix64p2 a, fix64p2 b, bool c) { return c ? b : a; }
+
+        /// <summary>Returns b if c is true, a otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 select(fix64p3 a, fix64p3 b, bool c) { return c ? b : a; }
+
+        /// <summary>Returns b if c is true, a otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 select(fix64p4 a, fix64p4 b, bool c) { return c ? b : a; }
+
+        /// <summary>
+        /// Returns a componentwise selection between two fix64p2 vectors a and b based on a bool2 selection mask c.
+        /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 select(fix64p2 a, fix64p2 b, bool2 c) { return new fix64p2(c.x ? b.x : a.x, c.y ? b.y : a.y); }
+
+        /// <summary>
+        /// Returns a componentwise selection between two fix64p3 vectors a and b based on a bool3 selection mask c.
+        /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 select(fix64p3 a, fix64p3 b, bool3 c) { return new fix64p3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z); }
+
+        /// <summary>
+        /// Returns a componentwise selection between two fix64p4 vectors a and b based on a bool4 selection mask c.
+        /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 select(fix64p4 a, fix64p4 b, bool4 c) { return new fix64p4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w); }
+
+
         /// <summary>Computes a step function. Returns 1.0f when x >= y, 0.0f otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float step(float y, float x) { return select(0.0f, 1.0f, x >= y); }
@@ -2293,6 +2807,23 @@ namespace Unity.Mathematics
         public static double4 step(double4 y, double4 x) { return select(double4(0.0), double4(1.0), x >= y); }
 
 
+        /// <summary>Computes a step function. Returns 1.0 when x >= y, 0.0 otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p step(fix64p y, fix64p x) { return select(fix64p.Zero, fix64p.One, x >= y); }
+
+        /// <summary>Returns the result of a componentwise step function where each component is 1.0f when x >= y and 0.0f otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 step(fix64p2 y, fix64p2 x) { return select(fix64p2(fix64p.Zero), fix64p2(fix64p.One), x >= y); }
+
+        /// <summary>Returns the result of a componentwise step function where each component is 1.0f when x >= y and 0.0f otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 step(fix64p3 y, fix64p3 x) { return select(fix64p3(fix64p.Zero), fix64p3(fix64p.One), x >= y); }
+
+        /// <summary>Returns the result of a componentwise step function where each component is 1.0f when x >= y and 0.0f otherwise.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 step(fix64p4 y, fix64p4 x) { return select(fix64p4(fix64p.Zero), fix64p4(fix64p.One), x >= y); }
+
+
         /// <summary>Given an incident vector i and a normal vector n, returns the reflection vector r = i - 2.0f * dot(i, n) * n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float2 reflect(float2 i, float2 n) { return i - 2f * n * dot(i, n); }
@@ -2317,6 +2848,19 @@ namespace Unity.Mathematics
         /// <summary>Given an incident vector i and a normal vector n, returns the reflection vector r = i - 2.0 * dot(i, n) * n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double4 reflect(double4 i, double4 n) { return i - 2 * n * dot(i, n); }
+
+
+        /// <summary>Given an incident vector i and a normal vector n, returns the reflection vector r = i - 2.0 * dot(i, n) * n.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 reflect(fix64p2 i, fix64p2 n) { return i - new fix64p(2) * n * dot(i, n); }
+
+        /// <summary>Given an incident vector i and a normal vector n, returns the reflection vector r = i - 2.0 * dot(i, n) * n.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 reflect(fix64p3 i, fix64p3 n) { return i - new fix64p(2) * n * dot(i, n); }
+
+        /// <summary>Given an incident vector i and a normal vector n, returns the reflection vector r = i - 2.0 * dot(i, n) * n.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 reflect(fix64p4 i, fix64p4 n) { return i - new fix64p(2) * n * dot(i, n); }
 
 
         /// <summary>Returns the refraction vector given the incident vector i, the normal vector n and the refraction index eta.</summary>
@@ -2372,6 +2916,34 @@ namespace Unity.Mathematics
             double ni = dot(n, i);
             double k = 1.0 - eta * eta * (1.0 - ni * ni);
             return select(0.0f, eta * i - (eta * ni + sqrt(k)) * n, k >= 0);
+        }
+
+
+        /// <summary>Returns the refraction vector given the incident vector i, the normal vector n and the refraction index eta.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p2 refract(fix64p2 i, fix64p2 n, fix64p eta)
+        {
+            fix64p ni = dot(n, i);
+            fix64p k = fix64p.One - eta * eta * (fix64p.One - ni * ni);
+            return select(fix64p.Zero, eta * i - (eta * ni + sqrt(k)) * n, k >= fix64p.Zero);
+        }
+
+        /// <summary>Returns the refraction vector given the incident vector i, the normal vector n and the refraction index eta.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p3 refract(fix64p3 i, fix64p3 n, fix64p eta)
+        {
+            fix64p ni = dot(n, i);
+            fix64p k = fix64p.One - eta * eta * (fix64p.One - ni * ni);
+            return select(fix64p.Zero, eta * i - (eta * ni + sqrt(k)) * n, k >= fix64p.Zero);
+        }
+
+        /// <summary>Returns the refraction vector given the incident vector i, the normal vector n and the refraction index eta.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static fix64p4 refract(fix64p4 i, fix64p4 n, fix64p eta)
+        {
+            fix64p ni = dot(n, i);
+            fix64p k = fix64p.One - eta * eta * (fix64p.One - ni * ni);
+            return select(fix64p.Zero, eta * i - (eta * ni + sqrt(k)) * n, k >= fix64p.Zero);
         }
 
 

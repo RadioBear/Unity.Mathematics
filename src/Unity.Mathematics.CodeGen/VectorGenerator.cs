@@ -490,7 +490,15 @@ namespace Unity.Mathematics.Mathematics.CodeGen
                 GenerateConversion(str, opStr, mathStr, "float", false, true);
                 GenerateConversion(str, opStr, mathStr, "float", false, false);
             }
-            
+            else if (m_BaseType == "fix64p")
+            {
+                GenerateConversion(str, opStr, mathStr, "bool", true, true);
+                GenerateConversion(str, opStr, mathStr, "bool", true, false);
+                GenerateConversion(str, opStr, mathStr, "int", true, true);
+                GenerateConversion(str, opStr, mathStr, "int", true, false);
+                GenerateConversion(str, opStr, mathStr, "float", true, true);
+                GenerateConversion(str, opStr, mathStr, "float", true, false);
+            }
 
             str.Append("\n");
             str.Append(opStr);
